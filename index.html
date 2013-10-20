@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js ie6 ie6-8 ie6-7" lang="en"><![endif]-->
+<!--[if IE 7]><html class="no-js ie7 ie6-8 ie6-7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8 ie6-8" lang="en"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en" ng-app="dictionaryApp"><!--<![endif]-->
+<head>
+<meta charset="utf-8" />
+<title>Dictionary app</title> 
+<link href="css.css" rel="stylesheet" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript" src="js/dictionary.js" ></script>
+</head>
+<body  ng-controller="entriesController">
+ <ul>
+<li ng-repeat="entry in entries">
+{{entry.english}}
+<p>{{entry.polish}}</p>
+</li>
+</ul>
+
+</body>
+</html>
+
