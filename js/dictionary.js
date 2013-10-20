@@ -1,4 +1,4 @@
-var dictionaryApp = angular.module('dictionaryApp', []);
+var dictionaryApp = angular.module('dictionaryApp', ["ngResource"]);
  
 dictionaryApp.controller('entriesController', function entriesController($scope, $http) {
 	$scope.entries = [];
