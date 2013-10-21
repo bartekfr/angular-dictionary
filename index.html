@@ -13,12 +13,15 @@
 <script type="text/javascript" src="js/dictionary.js" ></script>
 </head>
 <body ng-app="dictionaryApp" ng-controller="entriesController">
-<ul>
-	<li ng-repeat="entry in entries">
-		<input type="text" ng-model="entry.english" value="{{entry.english}}"/>
-		<p>{{entry.polish}}</p>
-	</li>
-</ul>
+	<div class="search">
+		<input ng-model="query" type="text">
+	</div>
+	<ul>
+		<li ng-repeat="entry in entries | filter:query">
+			<input type="text" ng-model="entry.english" value="{{entry.english}}"/>
+			<p>{{entry.polish}}</p>
+		</li>
+	</ul>
 
 </body>
 </html>

@@ -34,7 +34,7 @@ angular.module('entriesResource', [])
 		};
 
 		Resource.save = function (data) {
-			return $http.post(collectionUrl, data, {params:defaultParams})
+			return $http.post(collectionUrl, data, {params: defaultParams})
 				.then(function (response) {
 					return new Resource(data);
 				});
