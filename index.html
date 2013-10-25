@@ -17,12 +17,17 @@
 		<input ng-model="query" type="text">
 	</div>
 	<ul>
-		<li ng-repeat="entry in entries | filter:query">
+		<li ng-repeat="entry in entries | filter:query | pagination: page: pageSize">
 			<input type="text" ng-model="entry.english" value="{{entry.english}}"/>
 			<p>{{entry.polish}}</p>
 		</li>
 	</ul>
-
+<div class="pagination">
+	<ul>
+		<li><a href="#" ng-click="setPage(page-1)">Prev</a></li>
+		<li><a href="#" ng-click="setPage(page+1)">Next</a></li>
+	</ul>
+</div>
 </body>
 </html>
 
