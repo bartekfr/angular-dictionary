@@ -17,10 +17,11 @@
 		<input ng-model="englishQuery" placeholder="english" type="text" value="">
 		<input ng-model="polishQuery" placeholder="polish" type="text" value="">
 	</div>
+	<span ng-click="reverse = !reverse">Reverse</span>
 	<ul>
-		<li ng-repeat="entry in filteredEntries = (entries | filter:{english: englishQuery, polish: polishQuery} | pagination: page: pageSize)">
-			<input type="text" ng-model="entry.english" />
-			<input type="text" ng-model="entry.polish" />
+		<li ng-repeat="entry in filteredEntries = (entries | filter:{englishWord: englishQuery, translatedWord: polishQuery} | pagination: page: pageSize | orderBy:'englishWord':reverse)">
+			<input type="text" ng-model="entry.englishWord" />
+			<input type="text" ng-model="entry.translatedWord" />
 			<input type="submit" ng-click="update(entry)" />
 		</li>
 	</ul>

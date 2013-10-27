@@ -48,8 +48,8 @@ angular.module('entriesResource', [])
 		Resource.update = function (data) {
 			var url = collectionUrl +  '/' + data._id;
 			var sendData = {
-				englishWord: data.english,
-				translatedWord: data.polish
+				englishWord: data.englishWord,
+				translatedWord: data.translatedWord
 			}
 			return $http.put(url, sendData, {params: defaultParams})
 				.then(function (response) {

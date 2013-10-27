@@ -17,10 +17,11 @@ dictionaryApp.constant('MONGOLAB_CONFIG', {
 .controller('entriesController', function entriesController($scope, Entries) {
 	$scope.entries = [];
 	$scope.page = 0;
-	$scope.pageSize = 5;
+	$scope.pageSize = 15;
 	$scope.dataLength = 0;
 	$scope.englishQuery = "";
 	$scope.polishQuery = "";
+	$scope.reverse = false;
 	/*var responsePromise = $http.get('https://api.mongolab.com/api/1/databases/dict/collections/EntriesCollection',{
 		params:{
 			apiKey: 'DMXpO9AqPJbloiV0hGkgnuRD45pyGGSx'
@@ -31,8 +32,8 @@ dictionaryApp.constant('MONGOLAB_CONFIG', {
 		$.each(resp, function(i, ob) {
 			$scope.entries.push({
 				_id: ob._id.$oid,
-				english: ob.englishWord,
-				polish: ob.translatedWord
+				englishWord: ob.englishWord,
+				translatedWord: ob.translatedWord
 			})
 		});
 		$scope.dataLength = $scope.entries.length;
@@ -48,6 +49,6 @@ dictionaryApp.constant('MONGOLAB_CONFIG', {
 		return false;
 	}
 	$scope.update = function(data) {
-		var user = new Entries(data).$update();;
+		var user = new Entries(data).$update();
 	}
 });
