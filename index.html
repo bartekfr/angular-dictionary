@@ -14,12 +14,14 @@
 </head>
 <body ng-app="dictionaryApp" ng-controller="entriesController">
 	<div class="search">
-		<input ng-model="query" type="text">
+		<input ng-model="englishQuery" placeholder="english" type="text" value="">
+		<input ng-model="polishQuery" placeholder="polish" type="text" value="">
 	</div>
 	<ul>
-		<li ng-repeat="entry in entries | filter:query | pagination: page: pageSize">
-			<input type="text" ng-model="entry.english" value="{{entry.english}}"/>
-			<p>{{entry.polish}}</p>
+		<li ng-repeat="entry in filteredEntries = (entries | filter:{english: englishQuery, polish: polishQuery} | pagination: page: pageSize)">
+			<input type="text" ng-model="entry.english" />
+			<input type="text" ng-model="entry.polish" />
+			<input type="submit" ng-click="update(entry)" />
 		</li>
 	</ul>
 <div class="pagination">

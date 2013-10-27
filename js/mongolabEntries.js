@@ -22,9 +22,10 @@ angular.module('entriesResource', [])
 		};
 
 		Resource.query = function (params) {
-			return $http.get(collectionUrl, {
+			var get = $http.get(collectionUrl, {
 				params:angular.extend({q:JSON.stringify({} || params)}, defaultParams)
-			}).then(function (response) {
+			});
+			return get.then(function (response) {
 					var result = [];
 					angular.forEach(response.data, function (value, key) {
 						result[key] = new Resource(value);
@@ -42,6 +43,22 @@ angular.module('entriesResource', [])
 
 		Resource.prototype.$save = function (data) {
 			return Resource.save(this);
+		};
+
+		Resource.update = function (data) {
+			var url = collectionUrl +  '/' + data._id;
+			var sendData = {
+				englishWord: data.english,
+				translatedWord: data.polish
+			}
+			return $http.put(url, sendData, {params: defaultParams})
+				.then(function (response) {
+					return new Resource(sendData);
+				});
+		};
+
+		Resource.prototype.$update = function (data) {
+			return Resource.update(this);
 		};
 
 		Resource.remove = function (data) {
