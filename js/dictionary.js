@@ -43,6 +43,7 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 	$scope.$watch('searchedEntries.length', function(filteredSize){
 		if(filteredSize) {
 			$scope.pages = [];
+			$scope.currentPage = 0;
 			var noOfPages = Math.ceil(filteredSize / $scope.pageSize);
 			for (var i = 0; i < noOfPages; i++) {
 				$scope.pages.push(i);
