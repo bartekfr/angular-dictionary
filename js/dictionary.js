@@ -1,12 +1,18 @@
-var dictionaryApp = angular.module('dictionaryApp', ["entriesResource"]);
- 
-dictionaryApp.constant('MONGOLAB_CONFIG', {
+angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
+.config(function($routeProvider, $locationProvider) {
+	//$locationProvider.html5Mode(true);
+	$routeProvider
+		.when('/list', {templateUrl: 'templates/list.html', controller: 'listController'})
+		.when('/add',  {templateUrl: 'templates/add.html', controller: 'addController'})
+		.otherwise({redirectTo: '/list'});
+})
+//db connection config
+.constant('MONGOLAB_CONFIG', {
 	DB_NAME: 'dict',
 	API_KEY: 'DMXpO9AqPJbloiV0hGkgnuRD45pyGGSx'
 })
 .factory('Entries', function(entriesResource){
 	return entriesResource('EntriesCollection')
-
 })
 .filter('pagination', function() {
 	return function(input, page, size) {
@@ -14,19 +20,35 @@ dictionaryApp.constant('MONGOLAB_CONFIG', {
 		return input.slice(start, start + size)
 	}
 })
-.controller('entriesController', function entriesController($scope, Entries) {
+.controller('mainController', function ($scope) {
+
+})
+.controller('listController', function ($scope, Entries) {
 	$scope.entries = [];
-	$scope.page = 0;
-	$scope.pageSize = 15;
-	$scope.dataLength = 0;
+	$scope.currentPage = 0;
+	$scope.pageSize = 5;
 	$scope.englishQuery = "";
 	$scope.polishQuery = "";
 	$scope.reverse = false;
-	/*var responsePromise = $http.get('https://api.mongolab.com/api/1/databases/dict/collections/EntriesCollection',{
-		params:{
-			apiKey: 'DMXpO9AqPJbloiV0hGkgnuRD45pyGGSx'
+	$scope.searchedEntries = [];
+	$scope.pages = [];
+
+	$scope.setPage = function(page) {
+		if(page >= 0 && page < $scope.pages.length) {
+			$scope.currentPage = page;
 		}
-	});*/
+		return false;
+	}
+
+	$scope.$watch('searchedEntries.length', function(filteredSize){
+		if(filteredSize) {
+			$scope.pages = [];
+			var noOfPages = Math.ceil(filteredSize / $scope.pageSize);
+			for (var i = 0; i < noOfPages; i++) {
+				$scope.pages.push(i);
+			}
+		}
+	});
 
 	Entries.query().then(function(resp) {
 		$.each(resp, function(i, ob) {
@@ -36,19 +58,16 @@ dictionaryApp.constant('MONGOLAB_CONFIG', {
 				translatedWord: ob.translatedWord
 			})
 		});
-		$scope.dataLength = $scope.entries.length;
 	}, function(resp) {
 		console.log('there was problem with database connection', resp)
 	});
-	//
 
-	$scope.setPage = function(page) {
-		if(page >= 0 && page < $scope.dataLength / $scope.pageSize) {
-			$scope.page = page;
-		}
-		return false;
-	}
 	$scope.update = function(data) {
 		var user = new Entries(data).$update();
 	}
-});
+})
+.controller('addController', function ($scope, Entries) {
+	$scope.save = function(data) {
+		var user = new Entries(data).$save();
+	}
+})

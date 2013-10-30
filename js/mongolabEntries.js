@@ -2,7 +2,6 @@ angular.module('entriesResource', [])
 .factory('entriesResource', function ($http, MONGOLAB_CONFIG) {
 
 	return function (collectionName) {
-
 		//basic configuration
 		var collectionUrl =
 			'https://api.mongolab.com/api/1/databases/' +
@@ -20,7 +19,7 @@ angular.module('entriesResource', [])
 		var Resource = function (data) {
 			angular.extend(this, data);
 		};
-
+		//get
 		Resource.query = function (params) {
 			var get = $http.get(collectionUrl, {
 				params:angular.extend({q:JSON.stringify({} || params)}, defaultParams)
@@ -33,7 +32,7 @@ angular.module('entriesResource', [])
 					return result;
 				});
 		};
-
+		//save
 		Resource.save = function (data) {
 			return $http.post(collectionUrl, data, {params: defaultParams})
 				.then(function (response) {
@@ -45,6 +44,7 @@ angular.module('entriesResource', [])
 			return Resource.save(this);
 		};
 
+		//update
 		Resource.update = function (data) {
 			var url = collectionUrl +  '/' + data._id;
 			var sendData = {
@@ -61,6 +61,7 @@ angular.module('entriesResource', [])
 			return Resource.update(this);
 		};
 
+		//delete
 		Resource.remove = function (data) {
 			return $http['delete'](collectionUrl + '', defaultParams)
 				.then(function (response) {
@@ -71,8 +72,6 @@ angular.module('entriesResource', [])
 		Resource.prototype.$remove = function (data) {
 			return Resource.remove(this);
 		};
-
-		//other CRUD methods go here
 
 		//convenience methods
 		Resource.prototype.$id = function () {

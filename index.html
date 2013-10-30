@@ -9,28 +9,25 @@
 <link href="css.css" rel="stylesheet" />
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript" src="js/angular-route.js" ></script>
 <script type="text/javascript" src="js/mongolabEntries.js"></script>
 <script type="text/javascript" src="js/dictionary.js" ></script>
 </head>
-<body ng-app="dictionaryApp" ng-controller="entriesController">
-	<div class="search">
-		<input ng-model="englishQuery" placeholder="english" type="text" value="">
-		<input ng-model="polishQuery" placeholder="polish" type="text" value="">
+<body ng-app="dictionaryApp" >
+	<div class="main-holder" ng-view>
+
 	</div>
-	<span ng-click="reverse = !reverse">Reverse</span>
+
+<footer>
 	<ul>
-		<li ng-repeat="entry in filteredEntries = (entries | filter:{englishWord: englishQuery, translatedWord: polishQuery} | pagination: page: pageSize | orderBy:'englishWord':reverse)">
-			<input type="text" ng-model="entry.englishWord" />
-			<input type="text" ng-model="entry.translatedWord" />
-			<input type="submit" ng-click="update(entry)" />
+		<li>
+			<a href="#/add">add new</a>
+		</li>
+		<li>
+			<a href="#/list">show all</a>
 		</li>
 	</ul>
-<div class="pagination">
-	<ul>
-		<li><a href="#" ng-click="setPage(page-1)">Prev</a></li>
-		<li><a href="#" ng-click="setPage(page+1)">Next</a></li>
-	</ul>
-</div>
+</footer>
 </body>
 </html>
 
