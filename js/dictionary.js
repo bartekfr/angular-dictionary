@@ -26,7 +26,7 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 .controller('listController', function ($scope, Entries) {
 	$scope.entries = [];
 	$scope.currentPage = 0;
-	$scope.pageSize = 5;
+	$scope.pageSize = 10;
 	$scope.englishQuery = "";
 	$scope.polishQuery = "";
 	$scope.reverse = false;
