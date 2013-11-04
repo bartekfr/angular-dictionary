@@ -1,19 +1,14 @@
 ﻿<div class="search">
 	<input ng-model="englishQuery" placeholder="english" type="text" value="">
 	<input ng-model="polishQuery" placeholder="polish" type="text" value="">
+	<button ng-click="resetSearch()" class="btn btn-primary btn-xs">Clear search</button>
 </div>
 <span ng-click="reverse = !reverse">Reverse</span>
-<ul>
-	<li ng-repeat="entry in filteredEntries = (searchedEntries = (entries | filter:{englishWord: englishQuery, translatedWord: polishQuery}) | orderBy:'englishWord':reverse | pagination: currentPage: pageSize )">
-	<input type="text" ng-model="entry.englishWord" />
-	<input type="text" ng-model="entry.translatedWord" />
-	<input type="submit" ng-click="update(entry)" />
+<ul class="list-unstyled entries">
+	<li ng-repeat="entry in filteredEntries = (searchedEntries = (entries | filter:{englishWord: englishQuery, translatedWord: polishQuery}) | orderBy:'englishWord':reverse | pagination: currentPage: pageSize )" class="form-inline">
+			<input type="text" ng-model="entry.englishWord" class="form-control"/>
+			<input type="text" ng-model="entry.translatedWord" class="form-control"/>
+			<button type="submit" ng-click="update(entry)" class="btn btn-primary btn-xs">update</button>
 	</li>
 </ul>
-<div class="pagination">
-	<ul>
-		<li><a ng-click="setPage(currentPage-1)">Prev</a></li>
-		<li ng-repeat="page in pages"><a ng-click="setPage(page)">{{page+1}}</a></li>		
-		<li><a ng-click="setPage(currentPage+1)">Next</a></li>
-	</ul>
-</div>
+<pagination  filtered-size="filteredSize" current-page="currentPage" page-size="pageSize" ></pagination>
