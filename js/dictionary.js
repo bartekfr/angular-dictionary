@@ -33,7 +33,7 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 			'<div class="pagination">' +
 				'<ul class="pagination">' +
 					'<li><a ng-click="selectPrevious()">Previous</a></li>' +
-					'<li ng-repeat="page in pages" ng-class="{active: isActive(page)}"><a ng-click="selectPage(page)">{{page + 1}}</a></li>' +
+					'<li ng-repeat="page in pages" ng-class="{active: isActive(page)}"><a ng-click="setPage(page)">{{page + 1}}</a></li>' +
 					'<li><a ng-click="selectNext()">Next</a></li>' +
 				'</ul>' +
 			'</div>',
@@ -57,7 +57,6 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 				if(page >= 0 && page < $scope.pages.length) {
 					$scope.currentPage = page;
 				}
-				return false;
 			};
 
 			$scope.selectPrevious = function() {
@@ -81,7 +80,8 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 	$scope.reverse = false;
 	$scope.searchedEntries = [];
 	$scope.pages = [];
-	$scope.filteredSize;;
+	$scope.filteredSize;
+	$scope.test = "test";
 
 	$scope.$watch('searchedEntries.length', function(filteredSize){
 		$scope.filteredSize = filteredSize;
@@ -97,7 +97,6 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 				translatedWord: ob.translatedWord
 			})
 		});
-		console.log(JSON.stringify($scope.entries));
 	}, function(resp) {
 		console.log('there was problem with database connection', resp)
 	});
