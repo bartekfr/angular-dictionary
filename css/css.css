@@ -7,6 +7,14 @@
 	
 }
 
+.pagination a {
+	cursor: pointer;
+}
+
+.pagination .disabled a {
+	color: #eee;
+}
+
 .main-footer {
 	padding: 40px 0;
 }

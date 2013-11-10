@@ -32,16 +32,16 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 		template:
 			'<div class="pagination">' +
 				'<ul class="pagination">' +
-					'<li><a ng-click="selectPrevious()">Previous</a></li>' +
+					'<li ng-class="{disabled: noPrevious()}""><a ng-click="selectPrevious()">Previous</a></li>' +
 					'<li ng-repeat="page in pages" ng-class="{active: isActive(page)}"><a ng-click="setPage(page)">{{page + 1}}</a></li>' +
-					'<li><a ng-click="selectNext()">Next</a></li>' +
+					'<li ng-class="{disabled: noNext()}"><a ng-click="selectNext()">Next</a></li>' +
 				'</ul>' +
 			'</div>',
 		replace: true,
 		link: function($scope) {
+			$scope.pages = [];
 			$scope.$watch('filteredSize', function(value) {
 				if(value) {
-					$scope.pages = [];
 					$scope.currentPage = 0;
 					var noOfPages = Math.ceil(value / $scope.pageSize);
 					for (var i = 0; i < noOfPages; i++) {
@@ -65,6 +65,14 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 			$scope.selectNext = function() {
 				$scope.setPage($scope.currentPage + 1);
 			};
+
+			$scope.noPrevious = function() {
+				return $scope.currentPage === 0;
+			}
+
+			$scope.noNext = function() {
+				return $scope.currentPage === $scope.pages.length - 1;
+			}
 		}
 	};
 })
@@ -81,7 +89,6 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 	$scope.searchedEntries = [];
 	$scope.pages = [];
 	$scope.filteredSize;
-	$scope.test = "test";
 
 	$scope.$watch('searchedEntries.length', function(filteredSize){
 		$scope.filteredSize = filteredSize;
