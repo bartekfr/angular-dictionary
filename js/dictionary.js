@@ -39,12 +39,13 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 			'</div>',
 		replace: true,
 		link: function($scope) {
-			$scope.pages = [];
+			$scope.noOfPages = 0;
 			$scope.$watch('filteredSize', function(value) {
 				if(value) {
+					$scope.pages = [];
 					$scope.currentPage = 0;
-					var noOfPages = Math.ceil(value / $scope.pageSize);
-					for (var i = 0; i < noOfPages; i++) {
+					$scope.noOfPages = Math.ceil(value / $scope.pageSize);
+					for (var i = 0; i < $scope.noOfPages; i++) {
 						$scope.pages.push(i);
 					}
 				}
@@ -54,7 +55,7 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 			};
 
 			$scope.setPage = function(page) {
-				if(page >= 0 && page < $scope.pages.length) {
+				if(page >= 0 && page < $scope.noOfPages) {
 					$scope.currentPage = page;
 				}
 			};
@@ -71,7 +72,7 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 			}
 
 			$scope.noNext = function() {
-				return $scope.currentPage === $scope.pages.length - 1;
+				return $scope.currentPage === $scope.noOfPages - 1;
 			}
 		}
 	};
@@ -82,7 +83,7 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 .controller('listController', function ($scope, Entries) {
 	$scope.entries = [];
 	$scope.currentPage = 0;
-	$scope.pageSize = 10;
+	$scope.pageSize = 5;
 	$scope.englishQuery = "";
 	$scope.polishQuery = "";
 	$scope.reverse = false;
