@@ -1,14 +1,14 @@
 ﻿<div class="search">
 	<input ng-model="englishQuery" placeholder="english" type="text" value="">
 	<input ng-model="polishQuery" placeholder="polish" type="text" value="">
-	<button ng-click="resetSearch()" class="btn btn-primary btn-xs">Clear search</button>
+	<button ng-click="resetSearch()" class="btn">Clear search</button>
 </div>
 <span ng-click="reverse = !reverse">Reverse</span>
-<ul class="list-unstyled entries">
+<ul class="entries">
 	<li ng-repeat="entry in filteredEntries = (searchedEntries = (entries | filter:{englishWord: englishQuery, translatedWord: polishQuery}) | orderBy:'englishWord':reverse | pagination: currentPage: pageSize )" class="form-inline">
-			<input type="text" ng-model="entry.englishWord" class="form-control"/>
-			<input type="text" ng-model="entry.translatedWord" class="form-control"/>
-			<button type="submit" ng-click="update(entry)" class="btn btn-primary btn-xs">update</button>
+			<input type="text" ng-model="entry.englishWord" />
+			<input type="text" ng-model="entry.translatedWord" />
+			<button type="submit" ng-click="update(entry)">update</button>
 	</li>
 </ul>
 <pagination  filtered-size="filteredSize" current-page="currentPage" page-size="pageSize" ></pagination>

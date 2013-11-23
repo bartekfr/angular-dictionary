@@ -1,6 +1,12 @@
 @import "compass/reset";
 
-body {
-	font-family: Arial;
-	
+@mixin horizontal-list {
+	list-style: none;
+	li {
+		float: left;
+	}
+}
+
+.pagination-list {
+	@include horizontal-list;
 }

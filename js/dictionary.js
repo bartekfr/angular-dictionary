@@ -31,7 +31,7 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 		},
 		template:
 			'<div class="pagination">' +
-				'<ul class="pagination">' +
+				'<ul class="pagination-list">' +
 					'<li ng-class="{disabled: noPrevious()}""><a ng-click="selectPrevious()">Previous</a></li>' +
 					'<li ng-repeat="page in pages" ng-class="{active: isActive(page)}"><a ng-click="setPage(page)">{{page + 1}}</a></li>' +
 					'<li ng-class="{disabled: noNext()}"><a ng-click="selectNext()">Next</a></li>' +
