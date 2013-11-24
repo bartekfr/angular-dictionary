@@ -1,14 +1,16 @@
-﻿<div class="search">
-	<input ng-model="englishQuery" placeholder="english" type="text" value="">
-	<input ng-model="polishQuery" placeholder="polish" type="text" value="">
-	<button ng-click="resetSearch()" class="btn">Clear search</button>
-</div>
-<span ng-click="reverse = !reverse">Reverse</span>
+﻿<header class="main-header">
+	<div class="search">
+		<input ng-model="englishQuery" placeholder="english" type="text" value="">
+		<input ng-model="polishQuery" placeholder="polish" type="text" value="">
+		<button ng-click="resetSearch()" class="btn">Clear search</button>
+	</div>
+</header>
+<span class="order-btn" ng-click="reverse = !reverse">Reverse</span>
 <ul class="entries">
-	<li ng-repeat="entry in filteredEntries = (searchedEntries = (entries | filter:{englishWord: englishQuery, translatedWord: polishQuery}) | orderBy:'englishWord':reverse | pagination: currentPage: pageSize )" class="form-inline">
-			<input type="text" ng-model="entry.englishWord" />
-			<input type="text" ng-model="entry.translatedWord" />
-			<button type="submit" ng-click="update(entry)">update</button>
+	<li  ng-repeat="entry in (searchedEntries = (entries | filter:{englishWord: englishQuery, translatedWord: polishQuery}) | orderBy:'englishWord':reverse | pagination: currentPage: pageSize )" class="form-inline entry-row">
+			<span class="entry">{{entry.englishWord}}</span>
+			<span class="entry">{{entry.translatedWord}}</span>
+			<a href="#/change/{{entry._id}}" class="btn" >update</button>
 	</li>
 </ul>
 <pagination  filtered-size="filteredSize" current-page="currentPage" page-size="pageSize" ></pagination>

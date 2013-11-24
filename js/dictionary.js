@@ -4,6 +4,7 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 	$routeProvider
 		.when('/list', {templateUrl: 'templates/list.html', controller: 'listController'})
 		.when('/add',  {templateUrl: 'templates/add.html', controller: 'addController'})
+		.when('/change/:entryId',  {templateUrl: 'templates/change.html', controller: 'changeController'})
 		.otherwise({redirectTo: '/list'});
 })
 //db connection config
@@ -108,10 +109,6 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 	}, function(resp) {
 		console.log('there was problem with database connection', resp)
 	});
-
-	$scope.update = function(data) {
-		var user = new Entries(data).$update();
-	}
 	$scope.resetSearch = function() {
 		$scope.englishQuery = "";
 		$scope.polishQuery = "";	
@@ -120,5 +117,15 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 .controller('addController', function ($scope, Entries) {
 	$scope.save = function(data) {
 		var user = new Entries(data).$save();
+	}
+})
+.controller('changeController', function($scope, $routeParams, Entries) {
+	$scope.entry = {};
+	var id = $routeParams.entryId;
+	Entries.entry(id).then(function(data) {
+		$scope.entry = data;
+	});
+	$scope.update = function(data) {
+		var user = new Entries(data).$update();
 	}
 })

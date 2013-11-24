@@ -1,12 +1,103 @@
 @import "compass/reset";
+@import "compass/css3";
 
-@mixin horizontal-list {
-	list-style: none;
-	li {
-		float: left;
+* {
+	@include box-sizing(border-box);
+}
+
+/*generic mixins and vars*/
+$small-screen: 350px;
+$medium-screen: 768px;
+
+@mixin clearfix {
+	&:after {
+		display: block;
+		content: "";
+		clear: both;
 	}
 }
 
-.pagination-list {
+@mixin horizontal-list {
+	list-style: none;
+	@include clearfix;
+	li {
+		float: left;
+		margin: 0 5px;
+	}
+	li a {
+		display: inline-block;
+		padding: 2px;
+	}
+}
+
+@mixin btn {
+	display: block;
+	background: #00A285;
+	border: 0;
+	padding: 4px 5px;
+	font-size: 14px;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+}
+
+@mixin center {
+	max-width: 960px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: auto;
+}
+
+.pagination-list,
+.main-nav {
 	@include horizontal-list;
+}
+
+
+/*main holder*/
+.main-holder {
+	padding: 15px;
+}
+
+.main-header,
+.main-footer {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.order-btn {
+	display: block;
+	padding: 10px 0;
+}
+
+.entry-row {
+	padding: 5px 0;
+	@include clearfix;
+}
+
+.entry-row  .entry {
+	float: left;
+	width: 35%;
+	margin-right: 2%;
+}
+
+.entry-row .btn {
+	width: 20%;
+	float: right;
+	@include btn;
+}
+
+.pagination {
+	padding: 10px 0;
+}
+
+@media screen and (min-width: $small-screen) {
+}
+@media screen and (min-width: $medium-screen) {
+	.main-holder {
+		@include center;
+	}
+	.main-footer {
+		@include center;
+	}
 }

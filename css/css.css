@@ -1,3 +1,4 @@
+/* line 17, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -19,44 +20,152 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
+/* line 22, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
+/* line 24, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
+/* line 26, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
+/* line 28, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
+/* line 30, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
+/* line 103, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
+/* line 32, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
+/* line 116, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
 
-.pagination-list {
+/* line 4, ../sass/css.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*generic mixins and vars*/
+/* line 52, ../sass/css.scss */
+.pagination-list,
+.main-nav {
   list-style: none;
 }
-.pagination-list li {
+/* line 13, ../sass/css.scss */
+.pagination-list:after,
+.main-nav:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+/* line 23, ../sass/css.scss */
+.pagination-list li,
+.main-nav li {
   float: left;
+  margin: 0 5px;
+}
+/* line 27, ../sass/css.scss */
+.pagination-list li a,
+.main-nav li a {
+  display: inline-block;
+  padding: 2px;
+}
+
+/*main holder*/
+/* line 58, ../sass/css.scss */
+.main-holder {
+  padding: 15px;
+}
+
+/* line 63, ../sass/css.scss */
+.main-header,
+.main-footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* line 68, ../sass/css.scss */
+.order-btn {
+  display: block;
+  padding: 10px 0;
+}
+
+/* line 73, ../sass/css.scss */
+.entry-row {
+  padding: 5px 0;
+}
+/* line 13, ../sass/css.scss */
+.entry-row:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+/* line 78, ../sass/css.scss */
+.entry-row .entry {
+  float: left;
+  width: 35%;
+  margin-right: 2%;
+}
+
+/* line 84, ../sass/css.scss */
+.entry-row .btn {
+  width: 20%;
+  float: right;
+  display: block;
+  background: #00A285;
+  border: 0;
+  padding: 4px 5px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* line 90, ../sass/css.scss */
+.pagination {
+  padding: 10px 0;
+}
+
+@media screen and (min-width: 768px) {
+  /* line 97, ../sass/css.scss */
+  .main-holder {
+    max-width: 960px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: auto;
+  }
+
+  /* line 100, ../sass/css.scss */
+  .main-footer {
+    max-width: 960px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: auto;
+  }
 }

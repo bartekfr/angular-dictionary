@@ -61,6 +61,22 @@ angular.module('entriesResource', [])
 			return Resource.update(this);
 		};
 
+		Resource.entry = function (id) {
+			var url = collectionUrl +  '/' + id;
+			return $http.get(url, {params: defaultParams})
+				.then(function (response) {
+					return {
+						_id: id,
+						englishWord: response.data.englishWord,
+						translatedWord: response.data.translatedWord						
+					}
+				});
+		};
+
+		Resource.prototype.$entry = function (id) {
+			return Resource.entry(id);
+		};
+
 		//delete
 		Resource.remove = function (data) {
 			return $http['delete'](collectionUrl + '', defaultParams)
