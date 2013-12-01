@@ -5,12 +5,15 @@
 		<button ng-click="resetSearch()" class="btn">Clear search</button>
 	</div>
 </header>
-<span class="order-btn" ng-click="reverse = !reverse">Reverse</span>
-<ul class="entries">
-	<li  ng-repeat="entry in (searchedEntries = (entries | filter:{englishWord: englishQuery, translatedWord: polishQuery}) | orderBy:'englishWord':reverse | pagination: currentPage: pageSize )" class="form-inline entry-row">
-			<span class="entry">{{entry.englishWord}}</span>
-			<span class="entry">{{entry.translatedWord}}</span>
-			<a href="#/change/{{entry._id}}" class="btn" >update</button>
-	</li>
-</ul>
-<pagination  filtered-size="filteredSize" current-page="currentPage" page-size="pageSize" ></pagination>
+<section class="main">
+	<h1>Dictionary</h1>
+	<span class="order-btn" ng-click="reverse = !reverse">Reverse</span>
+	<ul class="entries">
+		<li  ng-repeat="entry in (searchedEntries = (entries | filter:{englishWord: englishQuery, translatedWord: polishQuery}) | orderBy:'englishWord':reverse | pagination: currentPage: pageSize )" class="form-inline entry-row">
+				<span class="entry">{{entry.englishWord}}</span>
+				<span class="entry">{{entry.translatedWord}}</span>
+				<a href="#/change/{{entry._id}}" class="btn" >update</button>
+		</li>
+	</ul>
+	<pagination  filtered-size="filteredSize" current-page="currentPage" page-size="pageSize" ></pagination>
+</section>

@@ -1,5 +1,5 @@
 @import "compass/reset";
-@import "compass/css3";
+@import "compass";
 
 * {
 	@include box-sizing(border-box);
@@ -17,6 +17,23 @@ $medium-screen: 768px;
 	}
 }
 
+@mixin link-styles ($normal, $hover, $weight) {
+	a {
+		color: $normal;
+		text-decoration: none;
+	}
+	a:hover {
+		color: $hover;	
+		text-decoration: underline;
+	}
+	a:active,
+	a:focus,
+	.active a {
+		color: $hover;
+		font-weight: $weight;
+	}
+}
+
 @mixin horizontal-list {
 	list-style: none;
 	@include clearfix;
@@ -31,7 +48,7 @@ $medium-screen: 768px;
 }
 
 @mixin btn {
-	display: block;
+	display: inline-block;
 	background: #00A285;
 	border: 0;
 	padding: 4px 5px;
@@ -39,6 +56,7 @@ $medium-screen: 768px;
 	color: #fff;
 	text-align: center;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 @mixin center {
@@ -46,6 +64,27 @@ $medium-screen: 768px;
 	padding-left: 10px;
 	padding-right: 10px;
 	margin: auto;
+}
+
+@mixin text-input {
+	input[type="text"]{
+		font-size: 14px;
+		padding: 4px;
+		margin: 0;
+	}
+}
+
+h1 {
+	font-size: 24px;
+	padding: 10px 0;
+}
+h2 {
+	font-size: 18px;
+	padding: 5px 0;
+}
+h3 {
+	font-size: 16px;
+	padding: 2px 0;
 }
 
 .pagination-list,
@@ -65,9 +104,18 @@ $medium-screen: 768px;
 	padding-bottom: 20px;
 }
 
+.search .btn {
+	@include btn;
+}
+.search {
+	@include text-input;
+}
+
 .order-btn {
 	display: block;
 	padding: 10px 0;
+	color: #aaa;
+	text-transform: lowercase;
 }
 
 .entry-row {
@@ -89,6 +137,15 @@ $medium-screen: 768px;
 
 .pagination {
 	padding: 10px 0;
+	@include link-styles(#000, #000, bold);
+}
+
+.pagination .disabled a {
+	color: #aaa;
+}
+
+.main-nav {
+	@include link-styles(#000, #000, bold);
 }
 
 @media screen and (min-width: $small-screen) {

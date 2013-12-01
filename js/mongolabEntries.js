@@ -61,7 +61,7 @@ angular.module('entriesResource', [])
 			return Resource.update(this);
 		};
 
-		Resource.entry = function (id) {
+		Resource.getSingleEntry = function (id) {
 			var url = collectionUrl +  '/' + id;
 			return $http.get(url, {params: defaultParams})
 				.then(function (response) {
@@ -73,8 +73,8 @@ angular.module('entriesResource', [])
 				});
 		};
 
-		Resource.prototype.$entry = function (id) {
-			return Resource.entry(id);
+		Resource.prototype.$getSingleEntry = function (id) {
+			return Resource.getSingleEntry(id);
 		};
 
 		//delete

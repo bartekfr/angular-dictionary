@@ -71,7 +71,25 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 /*generic mixins and vars*/
-/* line 52, ../sass/css.scss */
+/* line 77, ../sass/css.scss */
+h1 {
+  font-size: 24px;
+  padding: 10px 0;
+}
+
+/* line 81, ../sass/css.scss */
+h2 {
+  font-size: 18px;
+  padding: 5px 0;
+}
+
+/* line 85, ../sass/css.scss */
+h3 {
+  font-size: 16px;
+  padding: 2px 0;
+}
+
+/* line 91, ../sass/css.scss */
 .pagination-list,
 .main-nav {
   list-style: none;
@@ -83,13 +101,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   content: "";
   clear: both;
 }
-/* line 23, ../sass/css.scss */
+/* line 40, ../sass/css.scss */
 .pagination-list li,
 .main-nav li {
   float: left;
   margin: 0 5px;
 }
-/* line 27, ../sass/css.scss */
+/* line 44, ../sass/css.scss */
 .pagination-list li a,
 .main-nav li a {
   display: inline-block;
@@ -97,25 +115,47 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 /*main holder*/
-/* line 58, ../sass/css.scss */
+/* line 97, ../sass/css.scss */
 .main-holder {
   padding: 15px;
 }
 
-/* line 63, ../sass/css.scss */
+/* line 102, ../sass/css.scss */
 .main-header,
 .main-footer {
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
-/* line 68, ../sass/css.scss */
+/* line 107, ../sass/css.scss */
+.search .btn {
+  display: inline-block;
+  background: #00A285;
+  border: 0;
+  padding: 4px 5px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* line 70, ../sass/css.scss */
+.search input[type="text"] {
+  font-size: 14px;
+  padding: 4px;
+  margin: 0;
+}
+
+/* line 114, ../sass/css.scss */
 .order-btn {
   display: block;
   padding: 10px 0;
+  color: #aaa;
+  text-transform: lowercase;
 }
 
-/* line 73, ../sass/css.scss */
+/* line 121, ../sass/css.scss */
 .entry-row {
   padding: 5px 0;
 }
@@ -126,18 +166,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   clear: both;
 }
 
-/* line 78, ../sass/css.scss */
+/* line 126, ../sass/css.scss */
 .entry-row .entry {
   float: left;
   width: 35%;
   margin-right: 2%;
 }
 
-/* line 84, ../sass/css.scss */
+/* line 132, ../sass/css.scss */
 .entry-row .btn {
   width: 20%;
   float: right;
-  display: block;
+  display: inline-block;
   background: #00A285;
   border: 0;
   padding: 4px 5px;
@@ -145,15 +185,56 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   color: #fff;
   text-align: center;
   text-decoration: none;
+  cursor: pointer;
 }
 
-/* line 90, ../sass/css.scss */
+/* line 138, ../sass/css.scss */
 .pagination {
   padding: 10px 0;
 }
+/* line 21, ../sass/css.scss */
+.pagination a {
+  color: black;
+  text-decoration: none;
+}
+/* line 25, ../sass/css.scss */
+.pagination a:hover {
+  color: black;
+  text-decoration: underline;
+}
+/* line 31, ../sass/css.scss */
+.pagination a:active,
+.pagination a:focus,
+.pagination .active a {
+  color: black;
+  font-weight: bold;
+}
+
+/* line 143, ../sass/css.scss */
+.pagination .disabled a {
+  color: #aaa;
+}
+
+/* line 21, ../sass/css.scss */
+.main-nav a {
+  color: black;
+  text-decoration: none;
+}
+/* line 25, ../sass/css.scss */
+.main-nav a:hover {
+  color: black;
+  text-decoration: underline;
+}
+/* line 31, ../sass/css.scss */
+.main-nav a:active,
+.main-nav a:focus,
+.main-nav .active a {
+  color: black;
+  font-weight: bold;
+}
 
 @media screen and (min-width: 768px) {
-  /* line 97, ../sass/css.scss */
+  /* line 154, ../sass/css.scss */
   .main-holder {
     max-width: 960px;
     padding-left: 10px;
@@ -161,7 +242,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     margin: auto;
   }
 
-  /* line 100, ../sass/css.scss */
+  /* line 157, ../sass/css.scss */
   .main-footer {
     max-width: 960px;
     padding-left: 10px;

@@ -3,7 +3,7 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 	//$locationProvider.html5Mode(true);
 	$routeProvider
 		.when('/list', {templateUrl: 'templates/list.html', controller: 'listController'})
-		.when('/add',  {templateUrl: 'templates/add.html', controller: 'addController'})
+		.when('/add',  {templateUrl: 'templates/change.html', controller: 'addController'})
 		.when('/change/:entryId',  {templateUrl: 'templates/change.html', controller: 'changeController'})
 		.otherwise({redirectTo: '/list'});
 })
@@ -115,17 +115,21 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 	}
 })
 .controller('addController', function ($scope, Entries) {
-	$scope.save = function(data) {
+	$scope.info = "";
+	$scope.put = function(data) {
 		var user = new Entries(data).$save();
+		$scope.info = "entry saved:)"
 	}
 })
 .controller('changeController', function($scope, $routeParams, Entries) {
 	$scope.entry = {};
+	$scope.info = "";
 	var id = $routeParams.entryId;
-	Entries.entry(id).then(function(data) {
+	Entries.getSingleEntry(id).then(function(data) {
 		$scope.entry = data;
 	});
-	$scope.update = function(data) {
+	$scope.put = function(data) {
 		var user = new Entries(data).$update();
+		$scope.info = "entry saved:)"
 	}
 })
