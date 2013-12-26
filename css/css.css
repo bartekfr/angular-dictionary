@@ -70,64 +70,78 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-sizing: border-box;
 }
 
-/*generic mixins and vars*/
-/* line 77, ../sass/css.scss */
-h1 {
-  font-size: 24px;
-  padding: 10px 0;
-}
-
-/* line 81, ../sass/css.scss */
-h2 {
-  font-size: 18px;
-  padding: 5px 0;
-}
-
-/* line 85, ../sass/css.scss */
-h3 {
-  font-size: 16px;
-  padding: 2px 0;
-}
-
-/* line 91, ../sass/css.scss */
+/*Mixins
+----------------------------------------------*/
+/* line 38, ../sass/css.scss */
 .pagination-list,
 .main-nav {
   list-style: none;
 }
-/* line 13, ../sass/css.scss */
+/* line 14, ../sass/css.scss */
 .pagination-list:after,
 .main-nav:after {
   display: block;
   content: "";
   clear: both;
 }
-/* line 40, ../sass/css.scss */
+/* line 41, ../sass/css.scss */
 .pagination-list li,
 .main-nav li {
   float: left;
   margin: 0 5px;
 }
-/* line 44, ../sass/css.scss */
+/* line 45, ../sass/css.scss */
 .pagination-list li a,
 .main-nav li a {
   display: inline-block;
   padding: 2px;
 }
 
-/*main holder*/
-/* line 97, ../sass/css.scss */
+/*Typography
+-----------------*/
+/* line 80, ../sass/css.scss */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+/* line 85, ../sass/css.scss */
+h1 {
+  font-size: 24px;
+  padding: 10px 0;
+}
+
+/* line 89, ../sass/css.scss */
+h2 {
+  font-size: 18px;
+  padding: 5px 0;
+}
+
+/* line 93, ../sass/css.scss */
+h3 {
+  font-size: 16px;
+  padding: 2px 0;
+}
+
+/*Generic styles
+----------------------------------------------*/
+/*Main layout
+----------------------------------------------*/
+/* line 109, ../sass/css.scss */
 .main-holder {
   padding: 15px;
 }
 
-/* line 102, ../sass/css.scss */
+/* line 114, ../sass/css.scss */
 .main-header,
 .main-footer {
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
-/* line 107, ../sass/css.scss */
+/*Components
+----------------------------------------------*/
+/* line 123, ../sass/css.scss */
 .search .btn {
   display: inline-block;
   background: #00A285;
@@ -140,14 +154,14 @@ h3 {
   cursor: pointer;
 }
 
-/* line 70, ../sass/css.scss */
+/* line 71, ../sass/css.scss */
 .search input[type="text"] {
   font-size: 14px;
   padding: 4px;
   margin: 0;
 }
 
-/* line 114, ../sass/css.scss */
+/* line 130, ../sass/css.scss */
 .order-btn {
   display: block;
   padding: 10px 0;
@@ -155,27 +169,31 @@ h3 {
   text-transform: lowercase;
 }
 
-/* line 121, ../sass/css.scss */
+/* line 140, ../sass/css.scss */
 .entry-row {
   padding: 5px 0;
 }
-/* line 13, ../sass/css.scss */
+/* line 14, ../sass/css.scss */
 .entry-row:after {
   display: block;
   content: "";
   clear: both;
 }
 
-/* line 126, ../sass/css.scss */
-.entry-row .entry {
-  float: left;
-  width: 35%;
-  margin-right: 2%;
+/* line 146, ../sass/css.scss */
+.entries .term {
+  font-weight: bold;
+  margin-top: 10px;
+  padding: 10px 0;
+  border-top: 1px solid #000;
 }
-
-/* line 132, ../sass/css.scss */
-.entry-row .btn {
-  width: 20%;
+/* line 152, ../sass/css.scss */
+.entries .term-description {
+  padding-left: 20px;
+}
+/* line 156, ../sass/css.scss */
+.entries .btn {
+  width: 100px;
   float: right;
   display: inline-block;
   background: #00A285;
@@ -188,21 +206,21 @@ h3 {
   cursor: pointer;
 }
 
-/* line 138, ../sass/css.scss */
+/* line 163, ../sass/css.scss */
 .pagination {
   padding: 10px 0;
 }
-/* line 21, ../sass/css.scss */
+/* line 22, ../sass/css.scss */
 .pagination a {
   color: black;
   text-decoration: none;
 }
-/* line 25, ../sass/css.scss */
+/* line 26, ../sass/css.scss */
 .pagination a:hover {
   color: black;
   text-decoration: underline;
 }
-/* line 31, ../sass/css.scss */
+/* line 32, ../sass/css.scss */
 .pagination a:active,
 .pagination a:focus,
 .pagination .active a {
@@ -210,22 +228,22 @@ h3 {
   font-weight: bold;
 }
 
-/* line 143, ../sass/css.scss */
+/* line 168, ../sass/css.scss */
 .pagination .disabled a {
   color: #aaa;
 }
 
-/* line 21, ../sass/css.scss */
+/* line 22, ../sass/css.scss */
 .main-nav a {
   color: black;
   text-decoration: none;
 }
-/* line 25, ../sass/css.scss */
+/* line 26, ../sass/css.scss */
 .main-nav a:hover {
   color: black;
   text-decoration: underline;
 }
-/* line 31, ../sass/css.scss */
+/* line 32, ../sass/css.scss */
 .main-nav a:active,
 .main-nav a:focus,
 .main-nav .active a {
@@ -234,7 +252,7 @@ h3 {
 }
 
 @media screen and (min-width: 768px) {
-  /* line 154, ../sass/css.scss */
+  /* line 179, ../sass/css.scss */
   .main-holder {
     max-width: 960px;
     padding-left: 10px;
@@ -242,7 +260,7 @@ h3 {
     margin: auto;
   }
 
-  /* line 157, ../sass/css.scss */
+  /* line 182, ../sass/css.scss */
   .main-footer {
     max-width: 960px;
     padding-left: 10px;

@@ -5,7 +5,8 @@
 	@include box-sizing(border-box);
 }
 
-/*generic mixins and vars*/
+/*Mixins
+----------------------------------------------*/
 $small-screen: 350px;
 $medium-screen: 768px;
 
@@ -23,7 +24,7 @@ $medium-screen: 768px;
 		text-decoration: none;
 	}
 	a:hover {
-		color: $hover;	
+		color: $hover;
 		text-decoration: underline;
 	}
 	a:active,
@@ -34,7 +35,7 @@ $medium-screen: 768px;
 	}
 }
 
-@mixin horizontal-list {
+%horizontal-list {
 	list-style: none;
 	@include clearfix;
 	li {
@@ -74,6 +75,13 @@ $medium-screen: 768px;
 	}
 }
 
+/*Typography
+-----------------*/
+body {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+}
+
 h1 {
 	font-size: 24px;
 	padding: 10px 0;
@@ -89,11 +97,15 @@ h3 {
 
 .pagination-list,
 .main-nav {
-	@include horizontal-list;
+	@extend %horizontal-list;
 }
 
 
-/*main holder*/
+/*Generic styles
+----------------------------------------------*/
+
+/*Main layout
+----------------------------------------------*/
 .main-holder {
 	padding: 15px;
 }
@@ -103,6 +115,10 @@ h3 {
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
+
+/*Components
+----------------------------------------------*/
+
 
 .search .btn {
 	@include btn;
@@ -118,21 +134,30 @@ h3 {
 	text-transform: lowercase;
 }
 
+
+// gloassary terms
+
 .entry-row {
 	padding: 5px 0;
 	@include clearfix;
 }
 
-.entry-row  .entry {
-	float: left;
-	width: 35%;
-	margin-right: 2%;
-}
+.entries {
+		.term {
+			font-weight: bold;
+			margin-top: 10px;
+			padding: 10px 0;
+			border-top: 1px solid #000;
+		}
+		.term-description {
+			padding-left: 20px;
+		}
 
-.entry-row .btn {
-	width: 20%;
-	float: right;
-	@include btn;
+	.btn {
+		width: 100px;
+		float: right;
+		@include btn;
+	}
 }
 
 .pagination {

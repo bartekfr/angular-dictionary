@@ -8,12 +8,14 @@
 <section class="main">
 	<h1>Dictionary</h1>
 	<span class="order-btn" ng-click="reverse = !reverse">Reverse</span>
-	<ul class="entries">
-		<li  ng-repeat="entry in (searchedEntries = (entries | filter:{englishWord: englishQuery, translatedWord: polishQuery}) | orderBy:'englishWord':reverse | pagination: currentPage: pageSize )" class="form-inline entry-row">
+	<dl class="entries">
+		<dt  class="term" ng-repeat-start="entry in (searchedEntries = (entries | filter:{englishWord: englishQuery, translatedWord: polishQuery}) | orderBy:'englishWord':reverse | pagination: currentPage: pageSize )" class="form-inline entry-row">
 				<span class="entry">{{entry.englishWord}}</span>
-				<span class="entry">{{entry.translatedWord}}</span>
-				<a href="#/change/{{entry._id}}" class="btn" >update</button>
-		</li>
-	</ul>
+				<a href="#/change/{{entry._id}}" class="btn" >update</a>
+		</dt>
+		<dd class="term-description" ng-repeat-end >
+			<span class="entry">{{entry.translatedWord}}</span>
+		</dd>
+	</dl>
 	<pagination  filtered-size="filteredSize" current-page="currentPage" page-size="pageSize" ></pagination>
 </section>
