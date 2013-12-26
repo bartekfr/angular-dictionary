@@ -143,15 +143,17 @@ h3 {
 }
 
 .entries {
-		.term {
-			font-weight: bold;
-			margin-top: 10px;
-			padding: 10px 0;
-			border-top: 1px solid #000;
-		}
-		.term-description {
-			padding-left: 20px;
-		}
+	padding-bottom: 30px;
+
+	.term {
+		font-weight: bold;
+		margin-top: 10px;
+		padding: 10px 0;
+		border-top: 1px solid #000;
+	}
+	.term-description {
+		padding-left: 20px;
+	}
 
 	.btn {
 		width: 100px;

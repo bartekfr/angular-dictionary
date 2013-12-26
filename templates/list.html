@@ -7,7 +7,7 @@
 </header>
 <section class="main">
 	<h1>Dictionary</h1>
-	<span class="order-btn" ng-click="reverse = !reverse">Reverse</span>
+	<a href class="order-btn" ng-click="reverse=!reverse">Reverse</a>
 	<dl class="entries">
 		<dt  class="term" ng-repeat-start="entry in (searchedEntries = (entries | filter:{englishWord: englishQuery, translatedWord: polishQuery}) | orderBy:'englishWord':reverse | pagination: currentPage: pageSize )" class="form-inline entry-row">
 				<span class="entry">{{entry.englishWord}}</span>

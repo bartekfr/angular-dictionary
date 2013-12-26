@@ -180,18 +180,22 @@ h3 {
   clear: both;
 }
 
-/* line 146, ../sass/css.scss */
+/* line 145, ../sass/css.scss */
+.entries {
+  padding-bottom: 30px;
+}
+/* line 148, ../sass/css.scss */
 .entries .term {
   font-weight: bold;
   margin-top: 10px;
   padding: 10px 0;
   border-top: 1px solid #000;
 }
-/* line 152, ../sass/css.scss */
+/* line 154, ../sass/css.scss */
 .entries .term-description {
   padding-left: 20px;
 }
-/* line 156, ../sass/css.scss */
+/* line 158, ../sass/css.scss */
 .entries .btn {
   width: 100px;
   float: right;
@@ -206,7 +210,7 @@ h3 {
   cursor: pointer;
 }
 
-/* line 163, ../sass/css.scss */
+/* line 165, ../sass/css.scss */
 .pagination {
   padding: 10px 0;
 }
@@ -228,7 +232,7 @@ h3 {
   font-weight: bold;
 }
 
-/* line 168, ../sass/css.scss */
+/* line 170, ../sass/css.scss */
 .pagination .disabled a {
   color: #aaa;
 }
@@ -252,7 +256,7 @@ h3 {
 }
 
 @media screen and (min-width: 768px) {
-  /* line 179, ../sass/css.scss */
+  /* line 181, ../sass/css.scss */
   .main-holder {
     max-width: 960px;
     padding-left: 10px;
@@ -260,7 +264,7 @@ h3 {
     margin: auto;
   }
 
-  /* line 182, ../sass/css.scss */
+  /* line 184, ../sass/css.scss */
   .main-footer {
     max-width: 960px;
     padding-left: 10px;
