@@ -4,7 +4,15 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 	$routeProvider
 		.when('/list', {templateUrl: 'templates/list.html', controller: 'listController'})
 		.when('/add',  {templateUrl: 'templates/change.html', controller: 'addController'})
-		.when('/change/:entryId',  {templateUrl: 'templates/change.html', controller: 'changeController'})
+		.when('/change/:entryId',  {
+			templateUrl: 'templates/change.html',
+			controller: 'changeController',
+			resolve: {
+				entry: function($route, Entries) {
+					return  Entries.getSingleEntry($route.current.params.entryId);
+				}
+			}
+		})
 		.otherwise({redirectTo: '/list'});
 })
 //db connection config
@@ -111,7 +119,7 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 	});
 	$scope.resetSearch = function() {
 		$scope.englishQuery = "";
-		$scope.polishQuery = "";	
+		$scope.polishQuery = "";
 	}
 })
 .controller('addController', function ($scope, Entries) {
@@ -121,13 +129,11 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 		$scope.info = "entry saved:)"
 	}
 })
-.controller('changeController', function($scope, $routeParams, Entries) {
+.controller('changeController', function($scope, $routeParams, Entries, entry) {
 	$scope.entry = {};
 	$scope.info = "";
 	var id = $routeParams.entryId;
-	Entries.getSingleEntry(id).then(function(data) {
-		$scope.entry = data;
-	});
+	$scope.entry = entry;
 	$scope.put = function(data) {
 		var user = new Entries(data).$update();
 		$scope.info = "entry saved:)"
