@@ -89,7 +89,7 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 .controller('mainController', function ($scope) {
 
 })
-.controller('listController', function ($scope, Entries) {
+.controller('listController', function ($scope, Entries, orderByFilter) {
 	$scope.entries = [];
 	$scope.currentPage = 0;
 	$scope.pageSize = 5;
@@ -114,6 +114,7 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 				translatedWord: ob.translatedWord
 			})
 		});
+		$scope.entries = orderByFilter($scope.entries, "englishWord");
 	}, function(resp) {
 		console.log('there was problem with database connection', resp)
 	});

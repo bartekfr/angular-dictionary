@@ -7,11 +7,10 @@
 </header>
 <section class="main">
 	<h1>Dictionary</h1>
-	<a href class="order-btn" ng-click="reverse=!reverse">Reverse</a>
 	<dl class="entries">
-		<dt  class="term" ng-repeat-start="entry in (searchedEntries = (entries | filter:{englishWord: englishQuery, translatedWord: polishQuery}) | orderBy:'englishWord':reverse | pagination: currentPage: pageSize )" class="form-inline entry-row">
-				<span class="entry">{{entry.englishWord}}</span>
-				<a href="#/change/{{entry._id}}" class="btn" >update</a>
+		<dt  class="term" ng-repeat-start="entry in (searchedEntries = (entries | filter:{englishWord: englishQuery, translatedWord: polishQuery}) | pagination: currentPage: pageSize )" class="form-inline entry-row">
+			<span class="entry">{{entry.englishWord}}</span>
+			<a href="#/change/{{entry._id}}" class="btn" >update</a>
 		</dt>
 		<dd class="term-description" ng-repeat-end >
 			<span class="entry">{{entry.translatedWord}}</span>
