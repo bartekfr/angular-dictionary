@@ -1,9 +1,10 @@
-angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
+angular.module('dictionaryApp', ["entriesResource", "ngRoute", "dictionaryLogin", "directives", "filters"])
 .config(function($routeProvider, $locationProvider) {
 	//$locationProvider.html5Mode(true);
 	$routeProvider
 		.when('/list', {templateUrl: 'templates/list.html', controller: 'listController'})
 		.when('/add',  {templateUrl: 'templates/change.html', controller: 'addController'})
+		.when('/login',  {templateUrl: 'templates/login.html', controller: 'loginController'})
 		.when('/change/:entryId',  {
 			templateUrl: 'templates/change.html',
 			controller: 'changeController',
@@ -15,6 +16,17 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 		})
 		.otherwise({redirectTo: '/list'});
 })
+.run(function($rootScope, loginService, $location){
+	$rootScope.$on('$routeChangeStart', function(current, next) {
+		var isLogged = loginService.loginData.loginStatus;
+		if(!isLogged) {
+			console.log('routeChaneStart event: you are not logged');
+			$location.path('/login');
+		} else {
+			console.log('routeChaneStart event: Logged!');
+		}
+	});
+})
 //db connection config
 .constant('MONGOLAB_CONFIG', {
 	DB_NAME: 'dict',
@@ -23,70 +35,28 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute"])
 .factory('Entries', function(entriesResource){
 	return entriesResource('EntriesCollection')
 })
-.filter('pagination', function() {
-	return function(input, page, size) {
-		var start = page * size;
-		return input.slice(start, start + size)
+.controller('mainController', function($scope, loginService){
+		$scope.loginData = loginService.loginData;
+		$scope.logOut = loginService.logOut;
+		$scope.$watch("loginData.loginStatus", function(status){
+			$scope.loginMessage = status ? "Logged in": "Not logged in";
+		});
+		/*$rootScope.$watch('isLogged', function(c){
+			console.log('roooor', c)
+		})*/
+})
+.controller('loginController', function ($scope, $rootScope, loginService, $location) {
+	$scope.message = "";
+	$scope.login = function() {
+		loginService.logIn($scope.username, $scope.password).then(function(res){
+			if(res) {
+				$rootScope.isLogged = true;
+				$location.path('/list');
+			} else {
+				$scope.message = "Username and email dont match. Please try again";
+			}
+		});
 	}
-})
-.directive('pagination', function() {
-	return {
-		restrict: 'E',
-		scope: {
-			filteredSize: '=',
-			currentPage: '=',
-			onSelectPage: '&',
-			pageSize: '='
-		},
-		template:
-			'<div class="pagination">' +
-				'<ul class="pagination-list">' +
-					'<li ng-class="{disabled: noPrevious()}"><a href ng-click="selectPrevious()">Previous</a></li>' +
-					'<li class="item" ng-repeat="page in pages" ng-class="{active: isActive(page)}"><a href ng-click="setPage(page)">{{page + 1}}</span></a>' +
-					'<li ng-class="{disabled: noNext()}"><a href ng-click="selectNext()">Next</a></li>' +
-				'</ul>' +
-			'</div>',
-		replace: true,
-		link: function($scope) {
-			$scope.noOfPages = 0;
-			$scope.$watch('filteredSize', function(value) {
-				if(value) {
-					$scope.pages = [];
-					$scope.currentPage = 0;
-					$scope.noOfPages = Math.ceil(value / $scope.pageSize);
-					for (var i = 0; i < $scope.noOfPages; i++) {
-						$scope.pages.push(i);
-					}
-				}
-			});
-			$scope.isActive = function(page) {
-				return $scope.currentPage === page;
-			};
-
-			$scope.setPage = function(page) {
-				if(page >= 0 && page < $scope.noOfPages) {
-					$scope.currentPage = page;
-				}
-			};
-
-			$scope.selectPrevious = function() {
-				$scope.setPage($scope.currentPage - 1);
-			};
-			$scope.selectNext = function() {
-				$scope.setPage($scope.currentPage + 1);
-			};
-
-			$scope.noPrevious = function() {
-				return $scope.currentPage === 0;
-			}
-
-			$scope.noNext = function() {
-				return $scope.currentPage === $scope.noOfPages - 1;
-			}
-		}
-	};
-})
-.controller('mainController', function ($scope) {
 
 })
 .controller('listController', function ($scope, Entries, orderByFilter) {

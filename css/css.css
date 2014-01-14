@@ -99,25 +99,25 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /*Typography
 -----------------*/
-/* line 80, ../sass/css.scss */
+/* line 62, ../sass/css.scss */
 body {
   font-family: Arial, sans-serif;
   font-size: 14px;
 }
 
-/* line 85, ../sass/css.scss */
+/* line 67, ../sass/css.scss */
 h1 {
   font-size: 24px;
   padding: 10px 0;
 }
 
-/* line 89, ../sass/css.scss */
+/* line 71, ../sass/css.scss */
 h2 {
   font-size: 18px;
   padding: 5px 0;
 }
 
-/* line 93, ../sass/css.scss */
+/* line 75, ../sass/css.scss */
 h3 {
   font-size: 16px;
   padding: 2px 0;
@@ -125,24 +125,8 @@ h3 {
 
 /*Generic styles
 ----------------------------------------------*/
-/*Main layout
-----------------------------------------------*/
-/* line 109, ../sass/css.scss */
-.main-holder {
-  padding: 15px;
-}
-
-/* line 114, ../sass/css.scss */
-.main-header,
-.main-footer {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-/*Components
-----------------------------------------------*/
-/* line 123, ../sass/css.scss */
-.search .btn {
+/* line 88, ../sass/css.scss */
+.btn {
   display: inline-block;
   background: #00A285;
   border: 0;
@@ -154,14 +138,46 @@ h3 {
   cursor: pointer;
 }
 
-/* line 71, ../sass/css.scss */
-.search input[type="text"] {
+/* line 99, ../sass/css.scss */
+input[type="text"] {
   font-size: 14px;
   padding: 4px;
   margin: 0;
 }
 
-/* line 130, ../sass/css.scss */
+/*Main layout
+----------------------------------------------*/
+/* line 106, ../sass/css.scss */
+body {
+  width: 960px;
+  margin: auto;
+}
+
+/* line 112, ../sass/css.scss */
+.main-header,
+.main-footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/*Components
+----------------------------------------------*/
+/* line 120, ../sass/css.scss */
+.form .form-row {
+  padding-bottom: 10px;
+}
+/* line 123, ../sass/css.scss */
+.form label {
+  display: block;
+  padding: 5px 0;
+}
+
+/* line 129, ../sass/css.scss */
+.search {
+  padding: 30px 0;
+}
+
+/* line 133, ../sass/css.scss */
 .order-btn {
   display: block;
   padding: 10px 0;
@@ -169,7 +185,7 @@ h3 {
   text-transform: lowercase;
 }
 
-/* line 140, ../sass/css.scss */
+/* line 143, ../sass/css.scss */
 .entry-row {
   padding: 5px 0;
 }
@@ -180,37 +196,28 @@ h3 {
   clear: both;
 }
 
-/* line 145, ../sass/css.scss */
+/* line 148, ../sass/css.scss */
 .entries {
   padding-bottom: 30px;
 }
-/* line 148, ../sass/css.scss */
+/* line 151, ../sass/css.scss */
 .entries .term {
   font-weight: bold;
   margin-top: 10px;
   padding: 10px 0;
   border-top: 1px solid #000;
 }
-/* line 154, ../sass/css.scss */
+/* line 157, ../sass/css.scss */
 .entries .term-description {
   padding-left: 20px;
 }
-/* line 158, ../sass/css.scss */
+/* line 161, ../sass/css.scss */
 .entries .btn {
   width: 100px;
   float: right;
-  display: inline-block;
-  background: #00A285;
-  border: 0;
-  padding: 4px 5px;
-  font-size: 14px;
-  color: #fff;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
 }
 
-/* line 165, ../sass/css.scss */
+/* line 167, ../sass/css.scss */
 .pagination {
   padding: 10px 0;
 }
@@ -232,7 +239,7 @@ h3 {
   font-weight: bold;
 }
 
-/* line 170, ../sass/css.scss */
+/* line 172, ../sass/css.scss */
 .pagination .disabled a {
   color: #aaa;
 }
@@ -256,16 +263,8 @@ h3 {
 }
 
 @media screen and (min-width: 768px) {
-  /* line 181, ../sass/css.scss */
-  .main-holder {
-    max-width: 960px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin: auto;
-  }
-
-  /* line 184, ../sass/css.scss */
-  .main-footer {
+  /* line 183, ../sass/css.scss */
+  body {
     max-width: 960px;
     padding-left: 10px;
     padding-right: 10px;

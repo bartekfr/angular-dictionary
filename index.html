@@ -5,25 +5,34 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en" ><!--<![endif]-->
 <head>
 <meta charset="utf-8" />
-<title>Dictionary app</title> 
+<title>Dictionary app</title>
 <link href="css/css.css" rel="stylesheet" />
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="js/angular.js"></script>
-<script type="text/javascript" src="js/angular-route.js" ></script>
+<script type="text/javascript" src="js/angular-route.js"></script>
+<script type="text/javascript" src="js/filters.js"></script>
+<script type="text/javascript" src="js/directives.js"></script>
+<script type="text/javascript" src="js/loginService.js"></script>
 <script type="text/javascript" src="js/mongolabEntries.js"></script>
-<script type="text/javascript" src="js/dictionary.js" ></script>
+<script type="text/javascript" src="js/dictionary.js"></script>
 </head>
-<body ng-app="dictionaryApp" >
+<body ng-app="dictionaryApp" ng-controller="mainController" >
+	<header class="main-header">
+		<p>{{loginMessage}}</p>
+	</header>
 	<div class="main-holder" ng-view>
 
 	</div>
-	<footer class="main-footer">
+	<footer class="main-footer" ng-show="loginData.loginStatus">
 		<ul class="main-nav">
 			<li>
 				<a href="#/add">add new</a>
 			</li>
 			<li>
 				<a href="#/list">show all</a>
+			</li>
+			<li>
+				<a href="#login" ng-click="logOut()">log out</a>
 			</li>
 		</ul>
 	</footer>

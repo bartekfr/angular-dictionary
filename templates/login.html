@@ -1,0 +1,14 @@
+﻿<form class="form" ng-submit="login()">
+	<p class="form-row">
+		<label for="username" >Username:</label>
+		<input id="username" ng-model="username" autocomplete="off" placeholder="username">
+	</p>
+	<p class="form-row">
+		<label for="password" >Password:</label>
+		<input id="password" type="password" ng-model="password" placeholder="password">
+	</p>
+		<input class="btn" type="submit" value="Login">
+</form>
+<p>
+{{message}}
+</p>
