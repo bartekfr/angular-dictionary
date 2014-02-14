@@ -99,25 +99,25 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /*Typography
 -----------------*/
-/* line 62, ../sass/css.scss */
+/* line 54, ../sass/css.scss */
 body {
   font-family: Arial, sans-serif;
   font-size: 14px;
 }
 
-/* line 67, ../sass/css.scss */
+/* line 59, ../sass/css.scss */
 h1 {
   font-size: 24px;
   padding: 10px 0;
 }
 
-/* line 71, ../sass/css.scss */
+/* line 63, ../sass/css.scss */
 h2 {
   font-size: 18px;
   padding: 5px 0;
 }
 
-/* line 75, ../sass/css.scss */
+/* line 67, ../sass/css.scss */
 h3 {
   font-size: 16px;
   padding: 2px 0;
@@ -125,7 +125,7 @@ h3 {
 
 /*Generic styles
 ----------------------------------------------*/
-/* line 88, ../sass/css.scss */
+/* line 80, ../sass/css.scss */
 .btn {
   display: inline-block;
   background: #00A285;
@@ -138,22 +138,26 @@ h3 {
   cursor: pointer;
 }
 
-/* line 99, ../sass/css.scss */
+/* line 91, ../sass/css.scss */
 input[type="text"] {
   font-size: 14px;
   padding: 4px;
   margin: 0;
 }
 
-/*Main layout
-----------------------------------------------*/
-/* line 106, ../sass/css.scss */
-body {
-  width: 960px;
-  margin: auto;
+/* line 97, ../sass/css.scss */
+.hr-wrapper {
+  padding: 10px 0;
 }
 
-/* line 112, ../sass/css.scss */
+/*Main layout
+----------------------------------------------*/
+/* line 102, ../sass/css.scss */
+body {
+  padding: 15px;
+}
+
+/* line 107, ../sass/css.scss */
 .main-header,
 .main-footer {
   padding-top: 20px;
@@ -162,22 +166,22 @@ body {
 
 /*Components
 ----------------------------------------------*/
-/* line 120, ../sass/css.scss */
+/* line 115, ../sass/css.scss */
 .form .form-row {
   padding-bottom: 10px;
 }
-/* line 123, ../sass/css.scss */
+/* line 118, ../sass/css.scss */
 .form label {
   display: block;
   padding: 5px 0;
 }
 
-/* line 129, ../sass/css.scss */
+/* line 124, ../sass/css.scss */
 .search {
   padding: 30px 0;
 }
 
-/* line 133, ../sass/css.scss */
+/* line 128, ../sass/css.scss */
 .order-btn {
   display: block;
   padding: 10px 0;
@@ -185,7 +189,7 @@ body {
   text-transform: lowercase;
 }
 
-/* line 143, ../sass/css.scss */
+/* line 138, ../sass/css.scss */
 .entry-row {
   padding: 5px 0;
 }
@@ -196,28 +200,28 @@ body {
   clear: both;
 }
 
-/* line 148, ../sass/css.scss */
+/* line 143, ../sass/css.scss */
 .entries {
   padding-bottom: 30px;
 }
-/* line 151, ../sass/css.scss */
+/* line 146, ../sass/css.scss */
 .entries .term {
   font-weight: bold;
   margin-top: 10px;
   padding: 10px 0;
   border-top: 1px solid #000;
 }
-/* line 157, ../sass/css.scss */
+/* line 152, ../sass/css.scss */
 .entries .term-description {
   padding-left: 20px;
 }
-/* line 161, ../sass/css.scss */
+/* line 156, ../sass/css.scss */
 .entries .btn {
   width: 100px;
   float: right;
 }
 
-/* line 167, ../sass/css.scss */
+/* line 162, ../sass/css.scss */
 .pagination {
   padding: 10px 0;
 }
@@ -239,7 +243,7 @@ body {
   font-weight: bold;
 }
 
-/* line 172, ../sass/css.scss */
+/* line 167, ../sass/css.scss */
 .pagination .disabled a {
   color: #aaa;
 }
@@ -263,7 +267,7 @@ body {
 }
 
 @media screen and (min-width: 768px) {
-  /* line 183, ../sass/css.scss */
+  /* line 178, ../sass/css.scss */
   body {
     max-width: 960px;
     padding-left: 10px;

@@ -1,5 +1,5 @@
 angular.module('dictionaryApp', ["entriesResource", "ngRoute", "dictionaryLogin", "directives", "filters"])
-.config(function($routeProvider, $locationProvider) {
+.config(function($routeProvider,$locationProvider) {
 	//$locationProvider.html5Mode(true);
 	$routeProvider
 		.when('/list', {templateUrl: 'templates/list.html', controller: 'listController'})
@@ -25,6 +25,10 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute", "dictionaryLogin"
 		} else {
 			console.log('routeChaneStart event: Logged!');
 		}
+	});
+	$rootScope.$on('$routeChangeError', function(current, next) {
+		console.log('url doesnt exists');
+		$location.path('/list');
 	});
 })
 //db connection config
@@ -100,13 +104,24 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute", "dictionaryLogin"
 		$scope.info = "entry saved:)"
 	}
 })
-.controller('changeController', function($scope, $routeParams, Entries, entry) {
+.controller('changeController', function($scope, $location, $routeParams, Entries, entry) {
 	$scope.entry = {};
 	$scope.info = "";
+	$scope.deleteBtn = true;
 	var id = $routeParams.entryId;
 	$scope.entry = entry;
 	$scope.put = function(data) {
-		var user = new Entries(data).$update();
-		$scope.info = "entry saved:)"
+		var user = new Entries(data).$update().then(function() {
+			$scope.info = "entry saved:)"
+		});
+
+	}
+	$scope.delete = function() {
+		console.log(Entries);
+		Entries.remove(id).then(function() {
+			$scope.info = "entry deleted:(";
+				$location.path('/list');
+		});
+
 	}
 })

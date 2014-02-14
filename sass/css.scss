@@ -49,14 +49,6 @@ $medium-screen: 768px;
 }
 
 
-@mixin center {
-	max-width: 960px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin: auto;
-}
-
-
 /*Typography
 -----------------*/
 body {
@@ -101,11 +93,14 @@ input[type="text"]{
 	padding: 4px;
 	margin: 0;
 }
+
+.hr-wrapper {
+	padding: 10px 0;
+}
 /*Main layout
 ----------------------------------------------*/
 body {
-	width: 960px;
-	margin: auto;
+	padding: 15px;
 }
 
 .main-header,
@@ -181,6 +176,9 @@ body {
 }
 @media screen and (min-width: $medium-screen) {
 	body {
-		@include center;
+		max-width: 960px;
+		padding-left: 10px;
+		padding-right: 10px;
+		margin: auto;
 	}
 }

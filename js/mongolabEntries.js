@@ -68,7 +68,7 @@ angular.module('entriesResource', [])
 					return {
 						_id: id,
 						englishWord: response.data.englishWord,
-						translatedWord: response.data.translatedWord						
+						translatedWord: response.data.translatedWord
 					}
 				});
 		};
@@ -78,14 +78,14 @@ angular.module('entriesResource', [])
 		};
 
 		//delete
-		Resource.remove = function (data) {
-			return $http['delete'](collectionUrl + '', defaultParams)
+		Resource.remove = function (id) {
+			return $http.delete(collectionUrl + '/' + id, {params: defaultParams})
 				.then(function (response) {
-					return new Resource(data);
+					return response;
 				});
 		};
 
-		Resource.prototype.$remove = function (data) {
+		Resource.prototype.$remove = function (id) {
 			return Resource.remove(this);
 		};
 
