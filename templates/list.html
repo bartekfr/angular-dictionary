@@ -14,7 +14,7 @@
 	<h1>Dictionary</h1>
 	<dl class="entries">
 		<dt  class="term" ng-repeat-start="entry in entriesSearched = (entries |filter:{englishWord: word}:true) | pagination: currentPage: pageSize" class="form-inline entry-row">
-			<span class="entry">{{entry.englishWord}}</span>
+			<a href="#/list/{{entry.englishWord}}" class="entry">{{entry.englishWord}}</a>
 		</dt>
 		<dd class="term-description" ng-repeat-end >
 			<span class="entry">{{entry.translatedWord}}</span>

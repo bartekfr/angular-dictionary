@@ -229,16 +229,21 @@ body {
   border-top: 1px solid #000;
 }
 /* line 168, ../sass/css.scss */
+.entries .term a {
+  color: #000;
+  text-decoration: none;
+}
+/* line 173, ../sass/css.scss */
 .entries .term-description {
   padding-left: 20px;
 }
-/* line 173, ../sass/css.scss */
+/* line 178, ../sass/css.scss */
 .entries .btn {
   width: 100px;
   float: right;
 }
 
-/* line 179, ../sass/css.scss */
+/* line 184, ../sass/css.scss */
 .pagination {
   padding: 10px 0;
 }
@@ -260,7 +265,7 @@ body {
   font-weight: bold;
 }
 
-/* line 184, ../sass/css.scss */
+/* line 189, ../sass/css.scss */
 .pagination .disabled a {
   color: #aaa;
 }
@@ -284,7 +289,7 @@ body {
 }
 
 @media screen and (min-width: 768px) {
-  /* line 195, ../sass/css.scss */
+  /* line 200, ../sass/css.scss */
   body {
     max-width: 960px;
     padding-left: 10px;
