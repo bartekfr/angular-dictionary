@@ -10,15 +10,15 @@
 	</div>
 
 </header>
-<section class="main">
+<section class="main " ng-class="{single: word}">
 	<h1>Dictionary</h1>
 	<dl class="entries">
 		<dt  class="term" ng-repeat-start="entry in entriesSearched = (entries |filter:{englishWord: word}:true) | pagination: currentPage: pageSize" class="form-inline entry-row">
 			<span class="entry">{{entry.englishWord}}</span>
-			<a href="#/change/{{entry._id}}" class="btn" >update</a>
 		</dt>
 		<dd class="term-description" ng-repeat-end >
 			<span class="entry">{{entry.translatedWord}}</span>
+			<a href="#/change/{{entry._id}}" class="btn" >update</a>
 		</dd>
 	</dl>
 	<pagination  length="filteredSize" current-page="currentPage" page-size="pageSize" ></pagination>

@@ -72,17 +72,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /*Mixins
 ----------------------------------------------*/
+/* line 14, ../sass/css.scss */
+.entries .term-description:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
 /* line 38, ../sass/css.scss */
 .pagination-list,
 .main-nav {
   list-style: none;
-}
-/* line 14, ../sass/css.scss */
-.pagination-list:after,
-.main-nav:after {
-  display: block;
-  content: "";
-  clear: both;
+  overflow: hidden;
+  *zoom: 1;
 }
 /* line 41, ../sass/css.scss */
 .pagination-list li,
@@ -181,7 +183,12 @@ body {
   padding: 30px 0;
 }
 
-/* line 128, ../sass/css.scss */
+/* line 127, ../sass/css.scss */
+.search-result {
+  height: 30px;
+}
+
+/* line 131, ../sass/css.scss */
 .order-btn {
   display: block;
   padding: 10px 0;
@@ -189,39 +196,49 @@ body {
   text-transform: lowercase;
 }
 
-/* line 138, ../sass/css.scss */
+/* line 141, ../sass/css.scss */
 .entry-row {
   padding: 5px 0;
-}
-/* line 14, ../sass/css.scss */
-.entry-row:after {
-  display: block;
-  content: "";
-  clear: both;
+  overflow: hidden;
+  *zoom: 1;
 }
 
-/* line 143, ../sass/css.scss */
+/* line 147, ../sass/css.scss */
+.single .entries .term {
+  display: none;
+}
+/* line 149, ../sass/css.scss */
+.single .entries .term:first-child {
+  display: block;
+}
+/* line 153, ../sass/css.scss */
+.single .entries .term-description {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* line 159, ../sass/css.scss */
 .entries {
   padding-bottom: 30px;
 }
-/* line 146, ../sass/css.scss */
+/* line 162, ../sass/css.scss */
 .entries .term {
   font-weight: bold;
   margin-top: 10px;
   padding: 10px 0;
   border-top: 1px solid #000;
 }
-/* line 152, ../sass/css.scss */
+/* line 168, ../sass/css.scss */
 .entries .term-description {
   padding-left: 20px;
 }
-/* line 156, ../sass/css.scss */
+/* line 173, ../sass/css.scss */
 .entries .btn {
   width: 100px;
   float: right;
 }
 
-/* line 162, ../sass/css.scss */
+/* line 179, ../sass/css.scss */
 .pagination {
   padding: 10px 0;
 }
@@ -243,7 +260,7 @@ body {
   font-weight: bold;
 }
 
-/* line 167, ../sass/css.scss */
+/* line 184, ../sass/css.scss */
 .pagination .disabled a {
   color: #aaa;
 }
@@ -267,7 +284,7 @@ body {
 }
 
 @media screen and (min-width: 768px) {
-  /* line 178, ../sass/css.scss */
+  /* line 195, ../sass/css.scss */
   body {
     max-width: 960px;
     padding-left: 10px;

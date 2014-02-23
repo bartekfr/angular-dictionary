@@ -10,7 +10,7 @@
 $small-screen: 350px;
 $medium-screen: 768px;
 
-@mixin clearfix {
+%clearfix {
 	&:after {
 		display: block;
 		content: "";
@@ -124,6 +124,9 @@ body {
 .search {
 	padding: 30px 0;
 }
+.search-result {
+	height: 30px;
+}
 
 .order-btn {
 	display: block;
@@ -140,6 +143,19 @@ body {
 	@include clearfix;
 }
 
+.single .entries {
+	.term {
+		display: none;
+		&:first-child {
+			display: block;
+		}
+	}
+	.term-description {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+}
+
 .entries {
 	padding-bottom: 30px;
 
@@ -151,6 +167,7 @@ body {
 	}
 	.term-description {
 		padding-left: 20px;
+		@extend %clearfix;
 	}
 
 	.btn {
