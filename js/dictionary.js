@@ -75,8 +75,9 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute", "dictionaryLogin"
 	$scope.pages = [];
 	$scope.filteredSize;
 	$scope.word = $routeParams.word;
+	$scope.entriesSearched = [];
 
-	$scope.$watch('entries.length', function(filteredSize){
+	$scope.$watch('entriesSearched.length', function(filteredSize){
 		$scope.filteredSize = filteredSize;
 	});
 

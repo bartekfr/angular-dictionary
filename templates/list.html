@@ -13,7 +13,7 @@
 <section class="main">
 	<h1>Dictionary</h1>
 	<dl class="entries">
-		<dt  class="term" ng-repeat-start="entry in entries |filter:{englishWord: word}:true | pagination: currentPage: pageSize " class="form-inline entry-row">
+		<dt  class="term" ng-repeat-start="entry in entriesSearched = (entries |filter:{englishWord: word}:true) | pagination: currentPage: pageSize" class="form-inline entry-row">
 			<span class="entry">{{entry.englishWord}}</span>
 			<a href="#/change/{{entry._id}}" class="btn" >update</a>
 		</dt>
