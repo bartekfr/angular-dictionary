@@ -3,7 +3,7 @@
 		<input ng-model="englishQuery" placeholder="english" type="text" value="">
 		<button ng-click="resetSearch()" class="btn">Clear search</button>
 	</div>
-	<div class="seacrh-result">
+	<div class="search-result">
 		<span ng-repeat="entry in entries | search:{englishWord: englishQuery}">
 			<a href="#/list/{{entry.englishWord}}">{{entry.englishWord}}</a>
 		</span>	
