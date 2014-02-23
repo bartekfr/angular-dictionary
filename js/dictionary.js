@@ -3,6 +3,7 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute", "dictionaryLogin"
 	//$locationProvider.html5Mode(true);
 	$routeProvider
 		.when('/list', {templateUrl: 'templates/list.html', controller: 'listController'})
+		.when('/list/:word', {templateUrl: 'templates/list.html', controller: 'listController'})
 		.when('/add',  {templateUrl: 'templates/change.html', controller: 'addController'})
 		.when('/login',  {templateUrl: 'templates/login.html', controller: 'loginController'})
 		.when('/change/:entryId',  {
@@ -63,7 +64,7 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute", "dictionaryLogin"
 	}
 
 })
-.controller('listController', function ($scope, Entries, orderByFilter) {
+.controller('listController', function ($scope, Entries, orderByFilter, $routeParams) {
 	$scope.entries = [];
 	$scope.currentPage = 0;
 	$scope.pageSize = 5;
@@ -73,8 +74,9 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute", "dictionaryLogin"
 	$scope.searchedEntries = [];
 	$scope.pages = [];
 	$scope.filteredSize;
+	$scope.word = $routeParams.word;
 
-	$scope.$watch('searchedEntries.length', function(filteredSize){
+	$scope.$watch('entries.length', function(filteredSize){
 		$scope.filteredSize = filteredSize;
 	});
 

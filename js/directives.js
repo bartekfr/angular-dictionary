@@ -3,7 +3,7 @@ angular.module("directives", [])
 	return {
 		restrict: 'E',
 		scope: {
-			filteredSize: '=',
+			filteredSize: '=length',
 			currentPage: '=',
 			onSelectPage: '&',
 			pageSize: '='

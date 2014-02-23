@@ -1,14 +1,19 @@
 ﻿<header class="header">
 	<div class="search">
 		<input ng-model="englishQuery" placeholder="english" type="text" value="">
-		<input ng-model="polishQuery" placeholder="polish" type="text" value="">
 		<button ng-click="resetSearch()" class="btn">Clear search</button>
 	</div>
+	<div class="seacrh-result">
+		<span ng-repeat="entry in entries | search:{englishWord: englishQuery}">
+			<a href="#/list/{{entry.englishWord}}">{{entry.englishWord}}</a>
+		</span>	
+	</div>
+
 </header>
 <section class="main">
 	<h1>Dictionary</h1>
 	<dl class="entries">
-		<dt  class="term" ng-repeat-start="entry in (searchedEntries = (entries | filter:{englishWord: englishQuery, translatedWord: polishQuery}) | pagination: currentPage: pageSize )" class="form-inline entry-row">
+		<dt  class="term" ng-repeat-start="entry in entries |filter:{englishWord: word}:true | pagination: currentPage: pageSize " class="form-inline entry-row">
 			<span class="entry">{{entry.englishWord}}</span>
 			<a href="#/change/{{entry._id}}" class="btn" >update</a>
 		</dt>
@@ -16,5 +21,5 @@
 			<span class="entry">{{entry.translatedWord}}</span>
 		</dd>
 	</dl>
-	<pagination  filtered-size="filteredSize" current-page="currentPage" page-size="pageSize" ></pagination>
+	<pagination  length="filteredSize" current-page="currentPage" page-size="pageSize" ></pagination>
 </section>

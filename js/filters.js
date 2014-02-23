@@ -5,3 +5,10 @@ angular.module("filters", [])
 		return input.slice(start, start + size)
 	}
 })
+.filter('search', function($filter) {
+	return function(array, exp, comp) {
+		if(exp.englishWord.length >= 2) {
+			return $filter('filter')(array, exp, comp)		
+		}
+	}
+})
