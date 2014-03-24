@@ -113,14 +113,14 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute", "dictionaryLogin"
 	$scope.deleteBtn = true;
 	var id = $routeParams.entryId;
 	$scope.entry = entry;
+
 	$scope.put = function(data) {
-		var user = new Entries(data).$update().then(function() {
+		var user = Entries.update(data).then(function() {
 			$scope.info = "entry saved:)"
 		});
 
 	}
 	$scope.delete = function() {
-		console.log(Entries);
 		Entries.remove(id).then(function() {
 			$scope.info = "entry deleted:(";
 				$location.path('/list');

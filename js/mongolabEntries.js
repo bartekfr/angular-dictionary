@@ -40,7 +40,7 @@ angular.module('entriesResource', [])
 				});
 		};
 
-		Resource.prototype.$save = function (data) {
+		Resource.prototype.$save = function () {
 			return Resource.save(this);
 		};
 
@@ -55,10 +55,6 @@ angular.module('entriesResource', [])
 				.then(function (response) {
 					return new Resource(sendData);
 				});
-		};
-
-		Resource.prototype.$update = function (data) {
-			return Resource.update(this);
 		};
 
 		Resource.getSingleEntry = function (id) {
@@ -86,7 +82,7 @@ angular.module('entriesResource', [])
 		};
 
 		Resource.prototype.$remove = function (id) {
-			return Resource.remove(this);
+			return Resource.remove(this._id);
 		};
 
 		//convenience methods
