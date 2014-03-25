@@ -1,5 +1,5 @@
 angular.module('dictionaryLogin', [])
-.factory('loginService', function ($http, $location, $q) {
+.factory('loginService', ['$http', '$location', '$q', function ($http, $location, $q) {
 	var username;
 	var password;
 	var loginData = {
@@ -30,4 +30,4 @@ angular.module('dictionaryLogin', [])
 		loginData: loginData,
 		logOut: logOut
 	}
-});
+}]);

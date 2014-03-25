@@ -1,5 +1,5 @@
 angular.module('entriesResource', [])
-.factory('entriesResource', function ($http, MONGOLAB_CONFIG) {
+.factory('entriesResource', ['$http', 'MONGOLAB_CONFIG', function ($http, MONGOLAB_CONFIG) {
 
 	return function (collectionName) {
 		//basic configuration
@@ -50,7 +50,7 @@ angular.module('entriesResource', [])
 			var sendData = {
 				englishWord: data.englishWord,
 				translatedWord: data.translatedWord
-			}
+			};
 			return $http.put(url, sendData, {params: defaultParams})
 				.then(function (response) {
 					return new Resource(sendData);
@@ -65,7 +65,7 @@ angular.module('entriesResource', [])
 						_id: id,
 						englishWord: response.data.englishWord,
 						translatedWord: response.data.translatedWord
-					}
+					};
 				});
 		};
 
@@ -92,4 +92,4 @@ angular.module('entriesResource', [])
 
 		return Resource;
 	};
-});
+}]);

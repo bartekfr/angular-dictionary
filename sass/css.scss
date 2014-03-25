@@ -1,5 +1,5 @@
 @import "compass/reset";
-@import "compass";
+@import "compass/css3/box-sizing";
 
 * {
 	@include box-sizing(border-box);
@@ -35,9 +35,9 @@ $medium-screen: 768px;
 	}
 }
 
-%horizontal-list {
+%horizontal-list{
 	list-style: none;
-	@include clearfix;
+	@extend %clearfix;
 	li {
 		float: left;
 		margin: 0 5px;
@@ -97,6 +97,7 @@ input[type="text"]{
 .hr-wrapper {
 	padding: 10px 0;
 }
+
 /*Main layout
 ----------------------------------------------*/
 body {
@@ -140,7 +141,7 @@ body {
 
 .entry-row {
 	padding: 5px 0;
-	@include clearfix;
+	@extend %clearfix;
 }
 
 .single .entries {

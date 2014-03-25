@@ -1,5 +1,5 @@
 angular.module("directives", [])
-.directive('pagination', function() {
+.directive('pagination', function () {
 	return {
 		restrict: 'E',
 		scope: {
