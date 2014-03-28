@@ -12,3 +12,14 @@ angular.module("filters", [])
 		}
 	}
 }])
+.filter('spacesToDashes',  function(){
+	return function(input){
+		return input.replace(" ", "-");
+	}
+})
+.filter('dashesToSpaces',  function(){
+	return function(input){
+		if(typeof input !== 'undefined')
+		return input.replace("-", " ");
+	}
+})

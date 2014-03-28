@@ -23,17 +23,21 @@
 	<div class="main-holder" ng-view>
 
 	</div>
-	<footer class="main-footer" ng-show="loginData.loginStatus">
+	<footer class="main-footer" >
 		<ul class="main-nav">
-			<li>
+			<li ng-if="loginData.loginStatus">
+				<a ng-href="#" ng-click="logOut()">log out</a>
+			</li>
+			<li ng-if="!loginData.loginStatus">
+				<a href="#/login">login</a>
+			</li>
+			<li ng-if="loginData.loginStatus">
 				<a href="#/add">add new</a>
 			</li>
 			<li>
 				<a href="#/list">show all</a>
 			</li>
-			<li>
-				<a href="#login" ng-click="logOut()">log out</a>
-			</li>
+
 		</ul>
 	</footer>
 </body>

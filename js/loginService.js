@@ -15,15 +15,16 @@ angular.module('dictionaryLogin', [])
 			if((user === res.username && passwd === res.password)) {
 				loginData.loginStatus = true;
 				sessionStorage.setItem("loggedIn", "yes");
-				return true
+			} else {
+				logOut();
 			}
-			logOut();
 			return loginData.loginStatus;
 		});
 	};
 	function logOut() {
 		loginData.loginStatus = false;
 		sessionStorage.removeItem("loggedIn");
+		console.log('log out');
 	};
 	return {
 		logIn: logIn,

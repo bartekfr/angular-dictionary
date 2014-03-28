@@ -5,7 +5,7 @@
 	</div>
 	<div class="search-result">
 		<span ng-repeat="entry in entries | search:{englishWord: englishQuery}">
-			<a href="#/list/{{entry.englishWord}}">{{entry.englishWord}}</a>
+			<a href="#/list/{{entry.englishWord | spacesToDashes}}">{{entry.englishWord}}</a>
 		</span>	
 	</div>
 
@@ -13,13 +13,13 @@
 <section class="main " ng-class="{single: word}">
 	<h1>Dictionary</h1>
 	<dl class="entries">
-		<dt  class="term" ng-repeat-start="entry in entriesSearched = (entries |filter:{englishWord: word}:true) | pagination: currentPage: pageSize" class="form-inline entry-row">
-			<a href="#/list/{{entry.englishWord}}" class="entry">{{entry.englishWord}}</a>
+		<dt  class="term" ng-repeat-start="entry in entriesSearched = (entries |filter:{englishWord: word }:true) | pagination: currentPage: pageSize" class="form-inline entry-row">
+			<a href="#/list/{{entry.englishWord | spacesToDashes}}" class="entry">{{entry.englishWord}}</a>
 		</dt>
 		<dd class="term-description" ng-repeat-end >
 			<span class="entry">{{entry.translatedWord}}</span>
-			<a href="#/change/{{entry._id}}" class="btn" >update</a>
+			<a ng-if="loginData.loginStatus" href="#/change/{{entry._id}}" class="btn" >update</a>
 		</dd>
 	</dl>
-	<pagination  length="filteredSize" current-page="currentPage" page-size="pageSize" ></pagination>
+	<pagination  length="entriesSearched.length" current-page="currentPage" page-size="pageSize" ></pagination>
 </section>
