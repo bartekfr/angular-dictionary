@@ -1,18 +1,21 @@
 angular.module('dictionaryLogin', [])
-.factory('loginService', ['$http', '$location', '$q', function ($http, $location, $q) {
+.factory('Users', ['entriesResource', function (entriesResource){
+	return entriesResource('Users');
+}])
+.factory('loginService', ['$http', '$location', '$q', 'Users', function ($http, $location, $q, Users) {
 	var username;
 	var password;
 	var loginData = {
 		loginStatus: sessionStorage.getItem("loggedIn") || false
 	};
 	function logIn(user, passwd) {
-
-		//simualte data received from server
-		return $q.when({
-			username: "test",
-			password: "test"
+		return Users.query({
+			q: {
+				"username": user
+			}
 		}).then(function(res) {
-			if((user === res.username && passwd === res.password)) {
+			var res = res[0];
+			if((res.username === user &&  res.password === passwd)) {
 				loginData.loginStatus = true;
 				sessionStorage.setItem("loggedIn", "yes");
 			} else {
@@ -20,6 +23,7 @@ angular.module('dictionaryLogin', [])
 			}
 			return loginData.loginStatus;
 		});
+
 	};
 	function logOut() {
 		loginData.loginStatus = false;

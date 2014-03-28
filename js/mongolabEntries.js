@@ -22,7 +22,7 @@ angular.module('entriesResource', [])
 		//get
 		Resource.query = function (params) {
 			var get = $http.get(collectionUrl, {
-				params:angular.extend({q:JSON.stringify({} || params)}, defaultParams)
+				params:angular.extend({}, params, defaultParams)
 			});
 			return get.then(function (response) {
 					var result = [];
