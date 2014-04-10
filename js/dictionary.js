@@ -39,7 +39,7 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute", "dictionaryLogin"
 //db connection config
 .constant('MONGOLAB_CONFIG', {
 	DB_NAME: 'dict',
-	API_KEY: 'DMXpO9AqPJbloiV0hGkgnuRD45pyGGSx'
+	API_KEY: 'qUxqL9tqS3G-MbTZLJgdH8Ob4e1Yve_p'
 })
 .factory('Entries', ['entriesResource', function (entriesResource){
 	return entriesResource('EntriesCollection');
