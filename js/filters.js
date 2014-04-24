@@ -14,7 +14,7 @@ angular.module("filters", [])
 }])
 .filter('spacesToDashes',  function(){
 	return function(input){
-		return input.replace(" ", "-");
+		return input.replace(/\s/g, "-");
 	}
 })
 .filter('dashesToSpaces',  function(){
