@@ -20,6 +20,6 @@ angular.module("filters", [])
 .filter('dashesToSpaces',  function(){
 	return function(input){
 		if(typeof input !== 'undefined')
-		return input.replace("-", " ");
+		return input.replace(/-/g, " ");
 	}
 })
