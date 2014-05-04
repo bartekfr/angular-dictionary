@@ -13,8 +13,8 @@ angular.module('dictionaryLogin', [])
 			q: {
 				"username": user
 			}
-		}).then(function(res) {
-			var res = res[0];
+		}).then(function(response) {
+			var res = response[0];
 			if((res.username === user &&  res.password === passwd)) {
 				loginData.loginStatus = true;
 				sessionStorage.setItem("loggedIn", "yes");
@@ -24,15 +24,15 @@ angular.module('dictionaryLogin', [])
 			return loginData.loginStatus;
 		});
 
-	};
+	}
 	function logOut() {
 		loginData.loginStatus = false;
 		sessionStorage.removeItem("loggedIn");
 		console.log('log out');
-	};
+	}
 	return {
 		logIn: logIn,
 		loginData: loginData,
 		logOut: logOut
-	}
+	};
 }]);

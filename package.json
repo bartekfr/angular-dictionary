@@ -10,6 +10,7 @@
     "grunt-contrib-copy": "~0.5.0",
     "matchdep": "*",
     "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-jshint": "~0.8.0"
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-jasmine": "^0.6.4"
   }
 }

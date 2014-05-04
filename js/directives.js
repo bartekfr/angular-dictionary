@@ -48,11 +48,11 @@ angular.module("directives", [])
 
 			$scope.noPrevious = function() {
 				return $scope.currentPage === 0;
-			}
+			};
 
 			$scope.noNext = function() {
 				return $scope.currentPage === $scope.noOfPages - 1;
-			}
+			};
 		}
 	};
-})
+});

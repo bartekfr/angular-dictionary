@@ -11,16 +11,6 @@ module.exports = function(grunt){
 				tasks: ['compass:common']
 			}
 		},
-		uglify: {
-			libs: {
-				options: {
-					preserveComments: 'all'
-				},
-				files: [
-					{src: 'src/js/components/*.js', dest: 'js/scripts.min.js'}
-				]
-			}
-		},
 		compass: {
 			common: {
 				options: {
@@ -43,14 +33,23 @@ module.exports = function(grunt){
 						jQuery: true
 					},
 				},
-				src: ['js']
+				src: ['js/*.js']
+			}
+		},
+		jasmine: {
+			all: {
+				src: ['js/libs/angular.js','js/libs/angular-mocks.js','js/libs/angular-route.js', 'js/*.js'],
+				options: {
+					specs: 'tests/spec/*Spec.js'
+				}
 			}
 		}
 
 	});
 
-	grunt.registerTask('default', ['uglify', 'buildcss', 'copy']);
+	grunt.registerTask('default', ['buildcss', 'jshint']);
 	grunt.registerTask('buildcss',  ['compass:common']);
+	grunt.registerTask('js',  ['jshint', 'jasmine']);
 
 	//grunt.loadNpmTasks('grunt-contrib-compass');
 }
