@@ -38,9 +38,10 @@ module.exports = function(grunt){
 		},
 		jasmine: {
 			all: {
-				src: ['js/libs/angular.js','js/libs/angular-mocks.js','js/libs/angular-route.js', 'js/*.js'],
+				src: ['js/*.js'],
 				options: {
-					specs: 'tests/spec/*Spec.js'
+					specs: 'tests/spec/*Spec.js',
+					vendor: ['js/libs/angular.js', 'js/libs/angular-route.js', 'js/libs/angular-mocks.js']
 				}
 			}
 		}

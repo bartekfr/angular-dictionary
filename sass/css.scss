@@ -6,7 +6,7 @@
 }
 
 /*Mixins
-----------------------------------------------*/
+================================================================*/
 $small-screen: 350px;
 $medium-screen: 768px;
 
@@ -50,7 +50,7 @@ $medium-screen: 768px;
 
 
 /*Typography
------------------*/
+================================================================*/
 body {
 	font-family: Arial, sans-serif;
 	font-size: 14px;
@@ -75,8 +75,8 @@ h3 {
 }
 
 
-/*Generic styles
-----------------------------------------------*/
+/* Generic
+================================================================*/
 .btn {
 	display: inline-block;
 	background: #00A285;
@@ -99,7 +99,7 @@ input[type="text"]{
 }
 
 /*Main layout
-----------------------------------------------*/
+================================================================*/
 body {
 	padding: 15px;
 }
@@ -111,7 +111,7 @@ body {
 }
 
 /*Components
-----------------------------------------------*/
+================================================================*/
 .form {
 	.form-row {
 		padding-bottom: 10px;
@@ -137,24 +137,12 @@ body {
 }
 
 
-// gloassary terms
+/*Dictionary
+----------------------------------------*/
 
 .entry-row {
 	padding: 5px 0;
 	@extend %clearfix;
-}
-
-.single .entries {
-	.term {
-		display: none;
-		&:first-child {
-			display: block;
-		}
-	}
-	.term-description {
-		padding-top: 10px;
-		padding-bottom: 10px;
-	}
 }
 
 .entries {
@@ -182,6 +170,22 @@ body {
 	}
 }
 
+.single .entries {
+	.term {
+		display: none;
+		&:first-child {
+			display: block;
+		}
+	}
+	.term-description {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+}
+
+/*Pagination
+----------------------------------------*/
+
 .pagination {
 	padding: 10px 0;
 	@include link-styles(#000, #000, bold);
@@ -195,8 +199,12 @@ body {
 	@include link-styles(#000, #000, bold);
 }
 
+/*Media queries
+================================================================*/
+
 @media screen and (min-width: $small-screen) {
 }
+
 @media screen and (min-width: $medium-screen) {
 	body {
 		max-width: 960px;

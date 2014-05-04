@@ -61,7 +61,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 /*Mixins
-----------------------------------------------*/
+================================================================*/
 .pagination-list:after,
 .main-nav:after, .entry-row:after, .entries .term-description:after {
   display: block;
@@ -85,7 +85,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 /*Typography
------------------*/
+================================================================*/
 body {
   font-family: Arial, sans-serif;
   font-size: 14px;
@@ -106,8 +106,8 @@ h3 {
   padding: 2px 0;
 }
 
-/*Generic styles
-----------------------------------------------*/
+/* Generic
+================================================================*/
 .btn {
   display: inline-block;
   background: #00A285;
@@ -131,7 +131,7 @@ input[type="text"] {
 }
 
 /*Main layout
-----------------------------------------------*/
+================================================================*/
 body {
   padding: 15px;
 }
@@ -143,7 +143,7 @@ body {
 }
 
 /*Components
-----------------------------------------------*/
+================================================================*/
 .form .form-row {
   padding-bottom: 10px;
 }
@@ -167,19 +167,10 @@ body {
   text-transform: lowercase;
 }
 
+/*Dictionary
+----------------------------------------*/
 .entry-row {
   padding: 5px 0;
-}
-
-.single .entries .term {
-  display: none;
-}
-.single .entries .term:first-child {
-  display: block;
-}
-.single .entries .term-description {
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 
 .entries {
@@ -203,6 +194,19 @@ body {
   float: right;
 }
 
+.single .entries .term {
+  display: none;
+}
+.single .entries .term:first-child {
+  display: block;
+}
+.single .entries .term-description {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/*Pagination
+----------------------------------------*/
 .pagination {
   padding: 10px 0;
 }
@@ -240,6 +244,8 @@ body {
   font-weight: bold;
 }
 
+/*Media queries
+================================================================*/
 @media screen and (min-width: 768px) {
   body {
     max-width: 960px;
