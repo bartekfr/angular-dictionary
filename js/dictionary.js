@@ -3,12 +3,13 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute", "dictionaryLogin"
 	//$locationProvider.html5Mode(true);
 	$routeProvider
 		//.when('/list', {templateUrl: 'templates/list.html', controller: 'listController'})
-		.when('/list/:word?', {templateUrl: 'templates/list.html', controller: 'listController'})
-		.when('/add',  {templateUrl: 'templates/change.html', controller: 'addController'})
-		.when('/login',  {templateUrl: 'templates/login.html', controller: 'loginController'})
+		.when('/list/:word?', {templateUrl: 'templates/list.html', controller: 'listController', 'public': true})
+		.when('/add',  {templateUrl: 'templates/change.html', controller: 'addController', 'public': false})
+		.when('/login',  {templateUrl: 'templates/login.html', controller: 'loginController', 'public': true})
 		.when('/change/:entryId',  {
 			templateUrl: 'templates/change.html',
 			controller: 'changeController',
+			'public': false,
 			resolve: {
 				entry: function($route, Entries) {
 					return  Entries.getSingleEntry($route.current.params.entryId);
@@ -18,17 +19,14 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute", "dictionaryLogin"
 		.otherwise({redirectTo: '/list'});
 }])
 .run(['$rootScope', 'loginService', '$location', function ($rootScope, loginService, $location){
-	var allowedPath = {
-		'/list/:word?': true
-	};
 	$rootScope.$on('$routeChangeStart', function(current, next) {
 		var isLogged = loginService.loginData.loginStatus;
-
-		if(!isLogged && !allowedPath[next.originalPath]) {
+		var publicRoute = next.public;
+		if(!isLogged && !publicRoute) {
 			console.log('routeChaneStart event: you are not logged');
 			$location.path('/login');
 		} else {
-			console.log('routeChaneStart event: logged=' + isLogged + ', allowedPath=' + allowedPath[next.originalPath]);
+			console.log('routeChaneStart event: logged=' + isLogged + ', allowedPath=' + publicRoute);
 		}
 	});
 	$rootScope.$on('$routeChangeError', function (current, next) {
