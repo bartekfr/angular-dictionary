@@ -87,7 +87,7 @@ angular.module('dictionaryApp', ["entriesResource", "ngRoute", "dictionaryLogin"
 	//static entries collection without ajax request
 	//$scope.entries = JSON.parse('[{"_id":"52656e1ee4b0703e69c4cc97","englishWord":"sir","translatedWord":"pan"},{"_id":"526ab034e4b0e8555757d672","englishWord":"make","translatedWord":"robić"},{"_id":"526ab03ce4b09daba44a39e5","englishWord":"ghost","translatedWord":"duch"},{"_id":"526bd0cfe4b0e483fb8ae614","englishWord":"hey","translatedWord":"cześć"},{"_id":"526bd0d7e4b0e483fb8ae618","englishWord":"hey","translatedWord":"witam"},{"_id":"526d3800e4b0ea9607de1800","englishWord":"car","translatedWord":"samochód"},{"_id":"526d3f3ce4b0ea9607de204d","englishWord":"bike","translatedWord":"rower"},{"_id":"522f4321e4b072a157fa2468","englishWord":"green","translatedWord":"zielony, zieleń"},{"_id":"526ab028e4b09daba44a39d3","englishWord":"little","translatedWord":"mały, malutki"},{"englishWord":"vital","translatedWord":"istotny"},{"_id":"5270f7d7e4b00774deac82bd","englishWord":"fog","translatedWord":"mgła"},{"_id":"527135bee4b09a602c24e23d","englishWord":"hey","translatedWord":"halo"},{"_id":"527135bfe4b09a602c24e23e","englishWord":"hey","translatedWord":"test2"},{"_id":"527135c2e4b09a602c24e23f","englishWord":"hey","translatedWord":"test3"},{"_id":"526bd0f9e4b0e483fb8ae62c","englishWord":"hey","translatedWord":"dzień dobry"},{"_id":"52762271e4b0e32eb01e77b0","englishWord":"important","translatedWord":"ważny"},{"_id":"52762285e4b0e32eb01e77be","englishWord":"vital","translatedWord":"istotny, ważny"}]');
 	Entries.query().then(function (resp) {
-		$.each(resp, function(i, ob) {
+		angular.forEach(resp, function(ob, i) {
 			$scope.entries.push({
 				_id: ob._id.$oid,
 				englishWord: ob.englishWord,
