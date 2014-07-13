@@ -9,6 +9,23 @@ module.exports = function(grunt){
 			csscommon: {
 				files: ['sass/*.scss'],
 				tasks: ['compass:common']
+			},
+			js: {
+				files: ['js/*.js'],
+				tasks: ['jshint']
+			}
+		},
+		browserSync: {
+			dev: {
+				bsFiles: {
+					src : ['css/*.css', 'js/*.js']
+				},
+				options: {
+					watchTask: true,
+					server: {
+						baseDir: "./"
+					}
+				}
 			}
 		},
 		compass: {
@@ -48,7 +65,8 @@ module.exports = function(grunt){
 
 	});
 
-	grunt.registerTask('default', ['buildcss', 'jshint']);
+	grunt.registerTask('default', ['browserSync', 'buildcss', 'jshint']);
+	grunt.registerTask('live', ['browserSync', 'watch']);
 	grunt.registerTask('buildcss',  ['compass:common']);
 	grunt.registerTask('js',  ['jshint', 'jasmine']);
 
