@@ -3,7 +3,7 @@ angular.module('dictionaryLogin', [])
 	return entriesResource('Users');
 }])
 .factory('loginService', ['$http', '$location', '$q', 'Users', function ($http, $location, $q, Users) {
-	//only simulation of authentication (non secure way)
+	//loginService is only simulation of authentication (non secure way)
 	var username;
 	var password;
 	var loginData = {
